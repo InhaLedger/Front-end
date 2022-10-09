@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.inhaproject.karaoke3.databinding.ActivityMainBinding
+import com.inhaproject.karaoke3.recycler.RankAdapter
 import com.inhaproject.karaoke3.ui.home.HomeFragment
 import com.inhaproject.karaoke3.ui.mypage.MyPageFragment
 import com.inhaproject.karaoke3.ui.record.RecordFragment
 import com.inhaproject.karaoke3.ui.search.SearchFragment
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initBottomNavigation()
+
     }
 
     private fun replaceFragment(fragment: Fragment) {
