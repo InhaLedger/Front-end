@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "95406331479",
+    "firebase_url": "https://karaoke-app-9bff1-default-rtdb.firebaseio.com",
+    "project_id": "karaoke-app-9bff1",
+    "storage_bucket": "karaoke-app-9bff1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:95406331479:android:935950734cf7468fcf7512",
+        "android_client_info": {
+          "package_name": "com.inhaproject.karaoke3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "95406331479-ra6taqtqbfjl3bkvrhjnfonqaehh3q03.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnUOSChnOoXQjD4k5TE1o6UBDeCZxcHQE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "95406331479-ra6taqtqbfjl3bkvrhjnfonqaehh3q03.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

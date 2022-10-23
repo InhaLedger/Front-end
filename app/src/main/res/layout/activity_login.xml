@@ -6,7 +6,16 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
+    android:background="@color/color_theme"
     >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:background="@null"
+        android:src="@drawable/mic_icon"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -14,18 +23,14 @@
         android:layout_gravity="center"
         android:layout_marginBottom="16dp"
         android:gravity="center"
-        android:text="LOGIN"
-        android:textColor="@android:color/holo_blue_dark"
+        android:text="로그인"
+        android:fontFamily="@font/nanumsquareround"
+        android:textColor="@color/white"
         android:textSize="24sp">
 
     </TextView>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_gravity="center"
-        android:background="@null"
-        android:src="@drawable/mic_icon"></ImageView>
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -34,6 +39,7 @@
 
         <EditText
             android:id="@+id/TextInputEditText_email"
+            android:fontFamily="@font/nanumsquareround"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/white"
@@ -50,6 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/white"
+            android:fontFamily="@font/nanumsquareround"
             android:hint="Password" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -58,7 +65,8 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/bin_blue"
+        android:background="@drawable/bin_orange"
+        android:fontFamily="@font/nanumsquareround"
         android:text="로그인"
         android:textColor="#ffffff" />
 
@@ -66,6 +74,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:fontFamily="@font/nanumsquareround"
         android:gravity="center"
         android:text="or" />
 
@@ -74,8 +83,11 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/bin_blue"
+        android:background="@drawable/bin_orange"
+        android:fontFamily="@font/nanumsquareround"
         android:text="회원가입"
         android:textColor="#ffffff" />
+
+
 
 </LinearLayout>

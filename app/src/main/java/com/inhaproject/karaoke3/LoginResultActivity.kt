@@ -11,8 +11,6 @@ class LoginResultActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         //넘겨 받은 Intent 객체에 해당 Key 값이 들어 있는지 확인
-        if(intent.hasExtra("email")){
-            tv_getEmail.text = intent.getStringExtra("email")
-        }
+
     }
 }

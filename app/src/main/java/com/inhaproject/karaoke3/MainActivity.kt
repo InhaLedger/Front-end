@@ -5,12 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.inhaproject.karaoke3.databinding.ActivityMainBinding
-import com.inhaproject.karaoke3.recycler.RankAdapter
 import com.inhaproject.karaoke3.ui.home.HomeFragment
 import com.inhaproject.karaoke3.ui.mypage.MyPageFragment
-import com.inhaproject.karaoke3.ui.record.RecordFragment
-import com.inhaproject.karaoke3.ui.search.SearchFragment
-import kotlinx.android.synthetic.main.fragment_home.*
+import com.inhaproject.karaoke3.ui.basket.BasketFragment
+import com.inhaproject.karaoke3.ui.community.CommunityFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,7 +21,9 @@ class MainActivity : AppCompatActivity() {
 
         initBottomNavigation()
 
+
     }
+
 
     private fun replaceFragment(fragment: Fragment) {
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
@@ -37,8 +37,8 @@ class MainActivity : AppCompatActivity() {
                 setOnItemSelectedListener { item ->
                     when(item.itemId) {
                         R.id.navigation_home -> replaceFragment(HomeFragment())
-                        R.id.navigation_search -> replaceFragment(SearchFragment())
-                        R.id.navigation_record -> replaceFragment(RecordFragment())
+                        R.id.navigation_community -> replaceFragment(CommunityFragment())
+                        R.id.navigation_basket -> replaceFragment(BasketFragment())
                         R.id.navigation_mypage -> replaceFragment(MyPageFragment())
                     }
                     true

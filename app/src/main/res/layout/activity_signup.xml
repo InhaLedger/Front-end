@@ -6,34 +6,38 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
+    android:background="@color/color_theme"
     >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:background="@null"
+        android:layout_marginBottom="30dp"
+        android:src="@drawable/mic_icon"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="16dp"
         android:gravity="center"
-        android:text="SIGN UP"
-        android:textColor="@android:color/holo_blue_dark"
+        android:text="회원가입"
+        android:textColor="@color/white"
         android:textSize="24sp"/>
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_gravity="center"
-        android:background="@null"
-        android:layout_marginBottom="30dp"
-        android:src="@drawable/mic_icon"></ImageView>
 
     <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+        android:textColor="@color/white"
     android:text="이메일"
     android:textStyle="bold"
     android:textSize="20sp"/>
 
 
     <EditText
+    android:id="@+id/Input_id"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:hint="ASD@gmail.com"
@@ -45,27 +49,16 @@
         android:layout_marginTop="5dp"
         android:textStyle="bold"
         android:textSize="20sp"
+        android:textColor="@color/white"
         android:text="비밀번호"/>
 
     <EditText
+        android:id="@+id/Input_pw"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="비밀번호를 입력하세요."
         android:inputType="textPassword" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:text="닉네임"/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="한글/영어 등을 한 줄로 입력하세요."
-        android:singleLine="true"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/SignUpButton"
@@ -73,7 +66,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/bin_blue"
+        android:background="@drawable/bin_orange"
         android:text="회원가입"
         android:textColor="#ffffff" />
 
