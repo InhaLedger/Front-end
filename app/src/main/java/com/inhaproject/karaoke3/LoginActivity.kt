@@ -5,22 +5,22 @@ import android.os.Bundle
 import android.widget.EditText
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
-import androidx.core.widget.addTextChangedListener
 import com.facebook.CallbackManager
-import com.facebook.FacebookCallback
-import com.facebook.FacebookException
-import com.facebook.login.LoginResult
-import com.facebook.login.widget.LoginButton
-import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.inhaproject.karaoke3.databinding.ActivityLoginBinding
 import com.inhaproject.karaoke3.databinding.ActivityMainBinding
+import com.inhaproject.karaoke3.retrofit.LoginResult
+import com.inhaproject.karaoke3.retrofit.RetroInterface.Companion.create
 import kotlinx.android.synthetic.main.activity_login.view.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class LoginActivity: AppCompatActivity() {
@@ -28,17 +28,10 @@ class LoginActivity: AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var callbackManager: CallbackManager
 
-    private val auth: FirebaseAuth by lazy {
-        Firebase.auth
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        //val emailEditText = findViewById<EditText>(R.id.TextInputEditText_email)
-        //val passwordEditText = findViewById<EditText>(R.id.TextInputEditText_password)
 
         callbackManager = CallbackManager.Factory.create()
 
@@ -50,23 +43,47 @@ class LoginActivity: AppCompatActivity() {
     private fun initLoginButton() {
         val loginButton = findViewById<AppCompatButton>(R.id.LoginButton)
         loginButton.setOnClickListener {
-            binding?.let {
+            binding.let {
                 val email = binding.TextInputEditTextEmail.text.toString()
                 val password = binding.TextInputEditTextPassword.text.toString()
+                val dialog = AlertDialog.Builder(this@LoginActivity)
 
-                if (email.isEmpty() || password.isEmpty()){
-                    Toast.makeText(baseContext, "입력되지 않은 정보가 있습니다.",Toast.LENGTH_SHORT).show()
-                }
-                auth.signInWithEmailAndPassword(email,password)
-                    .addOnCompleteListener(this) {
-                        if(it.isSuccessful){
-                            Toast.makeText(baseContext, "로그인 되었습니다.",Toast.LENGTH_SHORT).show()
-                            moveHomePage(auth?.currentUser)
+                val intent = Intent(this, MainActivity::class.java)
+
+                startActivity(intent)
+                finish()
+
+                /*create().login(email,password).enqueue(object:
+                    Callback<LoginResult>{
+                    override fun onResponse(
+                        call: Call<LoginResult>,
+                        response: Response<LoginResult>
+                    ) {
+                        val login = response.body()
+
+
+                        if(login?.token == null){
+                            dialog.setTitle("로그인 오류")
+                            dialog.setMessage("로그인에 실패했습니다.")
+                            dialog.show()
                         }
                         else {
-                            Toast.makeText(baseContext,"이메일 또는 비밀번호를 확인해주세요.",Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@LoginActivity,"로그인에 성공하였습니다.",Toast.LENGTH_SHORT).show()
+                            startActivity(intent)
+                            finish()
                         }
                     }
+
+                    override fun onFailure(
+                        call: Call<LoginResult>,
+                        t: Throwable
+                    ) {
+                        dialog.setTitle("실패 ㅠㅠㅠ")
+                        dialog.setMessage("통신에 실패했습니다.")
+                        dialog.show()
+                    }
+
+                })*/
 
             }
         }

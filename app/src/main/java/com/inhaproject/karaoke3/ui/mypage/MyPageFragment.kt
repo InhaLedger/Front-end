@@ -39,6 +39,7 @@ class MyPageFragment : Fragment() {
         data.apply {
             add(MyPageData("목소리 녹음 / 분석", R.drawable.ic_baseline_mic_24))
             add(MyPageData("나의 음역대",R.drawable.music_note))
+            add(MyPageData("맞춤 노래 추천",R.drawable.ic_eight_note_24))
 
             binding.myPageRecyclerView.addItemDecoration(DistanceItemDecorator(15))
             binding.myPageRecyclerView.addItemDecoration(

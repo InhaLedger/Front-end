@@ -7,6 +7,55 @@
     android:background="@color/dark_gray"
     tools:context=".ui.basket.BasketFragment">
 
+    <com.inhaproject.karaoke3.ui.mypage.record.SoundVisualizer
+        android:id="@+id/soundVisualizerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@id/recordTimeTextView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/octaveText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:text="1옥타브"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toTopOf="@id/noteText"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <TextView
+        android:id="@+id/noteText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:gravity="center"
+        android:text="A"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/soundVisualizerView" />
+
+    <TextView
+        android:id="@+id/pitchTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginEnd="40dp"
+        android:text="0 hz"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/noteText" />
+
     <Button
         android:id="@+id/resetButton"
         android:layout_width="wrap_content"
@@ -19,7 +68,7 @@
         app:layout_constraintTop_toTopOf="@id/recordButton"
         tools:ignore="HardcodedText" />
 
-    <TextView
+    <com.inhaproject.karaoke3.ui.mypage.record.CountTextView
         android:id="@+id/recordTimeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,8 +84,8 @@
         android:id="@+id/recordButton"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="@drawable/shape_oval_button"
         android:layout_marginBottom="50dp"
+        android:background="@drawable/shape_oval_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />

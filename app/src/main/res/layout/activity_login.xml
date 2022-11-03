@@ -2,12 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
-    android:background="@color/color_theme"
-    >
+    android:background="@color/color_theme">
 
     <ImageView
         android:layout_width="match_parent"
@@ -23,7 +23,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="16dp"
         android:gravity="center"
-        android:text="로그인"
+        android:text="Karaoke"
         android:fontFamily="@font/nanumsquareround"
         android:textColor="@color/white"
         android:textSize="24sp">
@@ -35,6 +35,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:helperTextTextColor="@color/color_orange"
         android:layout_marginBottom="16dp">
 
         <EditText
@@ -42,20 +43,21 @@
             android:fontFamily="@font/nanumsquareround"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/white"
+            android:background="@drawable/edittext_border"
             android:hint="Email" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:helperTextTextColor="@color/color_orange"
         android:layout_marginBottom="16dp">
 
         <EditText
             android:id="@+id/TextInputEditText_password"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/white"
+            android:background="@drawable/edittext_border"
             android:fontFamily="@font/nanumsquareround"
             android:hint="Password" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -76,14 +78,14 @@
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/nanumsquareround"
         android:gravity="center"
-        android:text="or" />
+        android:text="아이디/비밀번호 찾기" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/GosignUpButton"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/bin_orange"
+        android:background="@color/color_theme"
         android:fontFamily="@font/nanumsquareround"
         android:text="회원가입"
         android:textColor="#ffffff" />
