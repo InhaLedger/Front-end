@@ -4,56 +4,29 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.auth.FirebaseAuth
+import android.content.Context
+import android.util.Log
+import android.widget.Toast
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.inhaproject.karaoke3.databinding.FragmentBoardBinding
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.ChildEventListener
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
-import com.inhaproject.karaoke3.DBkey.Companion.DB_ARTICLES
+import com.inhaproject.karaoke3.preference.App
+import com.inhaproject.karaoke3.recycler.DistanceItemDecorator
+import com.inhaproject.karaoke3.retrofit.RetroInterface
+import com.inhaproject.karaoke3.ui.CustomItemDecoration
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class BoardActivity : AppCompatActivity() {
 
-    private lateinit var articleDB: DatabaseReference
     private lateinit var articleAdapter: ArticleAdapter
 
-    private val articleList = mutableListOf<ArticleModel>()
-
-    private val listner = object: ChildEventListener {
-        override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-            val articleModel = snapshot.getValue(ArticleModel::class.java)
-            articleModel ?: return
-
-            articleList.add(articleModel)
-            articleAdapter.submitList(articleList)
-        }
-
-        override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
-            TODO("Not yet implemented")
-        }
-
-        override fun onChildRemoved(snapshot: DataSnapshot) {
-            TODO("Not yet implemented")
-        }
-
-        override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
-            TODO("Not yet implemented")
-        }
-
-        override fun onCancelled(error: DatabaseError) {
-            TODO("Not yet implemented")
-        }
-
-    }
+    var data : PackArticleData? = null
+    private var articleList = ArrayList<PackArticleData>()
 
     lateinit var binding: FragmentBoardBinding
 
-    private val auth: FirebaseAuth by lazy {
-        Firebase.auth
-    }
+    private val api = RetroInterface.create();
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
@@ -61,36 +34,57 @@ class BoardActivity : AppCompatActivity() {
         binding = FragmentBoardBinding.inflate(layoutInflater)
 
         articleList.clear()
-        articleDB = Firebase.database.reference.child(DB_ARTICLES)
 
-        articleAdapter = ArticleAdapter()
+        api.packBoardList().enqueue(object : Callback<ArrayList<PackArticleData>>{
+            override fun onResponse(
+                call: Call<ArrayList<PackArticleData>>,
+                response: Response<ArrayList<PackArticleData>>
+            ) {
+                if(response.body().toString().isNotEmpty()){
+                    response.body().let {
+                        if (response.code() == 200) {
+                            articleList = response.body()!!
+                            Toast.makeText(
+                                this@BoardActivity,
+                                "게시판 서버 연결 성공 " + response.code(),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            setArticleAdapter(articleList)
+                        }
+                    }
+                }
 
-        binding.articleRecyclerView.layoutManager = LinearLayoutManager(this)
-        binding.articleRecyclerView.adapter = articleAdapter
+            }
+
+            override fun onFailure(call: Call<ArrayList<PackArticleData>>, t: Throwable) {
+                Toast.makeText(this@BoardActivity,"게시판 서버 연결 실패 " ,Toast.LENGTH_SHORT).show()
+                Log.d("BoardActivity", t.message.toString());
+            }
+
+        })
 
         binding.addFloatingButton.setOnClickListener{
-            this?.let {
+            this.let {
                 //로그인 기능 구현 후
                 //if(auth.currentUser != null) {
-                    val intent = Intent(it, AddArticleActivity::class.java)
-                    startActivity(intent)
+                val intent = Intent(it, AddArticleActivity::class.java)
+                startActivity(intent)
                 //}
             }
 
         }
 
-        articleDB.addChildEventListener(listner)
-
         setContentView(binding.root)
     }
 
-    override fun onResume() {
-        super.onResume()
-        articleAdapter.notifyDataSetChanged()
+    private fun setArticleAdapter(packArticleList: ArrayList<PackArticleData>) {
+        articleAdapter = ArticleAdapter(packArticleList,this)
+
+        binding.articleRecyclerView.layoutManager = LinearLayoutManager(this)
+        binding.articleRecyclerView.adapter = articleAdapter
+        binding.articleRecyclerView.addItemDecoration(DistanceItemDecorator(15))
+        binding.articleRecyclerView.addItemDecoration(CustomItemDecoration())
     }
 
-    fun onDestroyView() {
-        articleDB.removeEventListener(listner)
-    }
 
 }

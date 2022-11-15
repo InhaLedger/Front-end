@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_gray"
-    tools:context=".ui.basket.BasketFragment">
+    tools:context=".ui.mysong.BasketFragment">
 
     <com.inhaproject.karaoke3.ui.mypage.record.SoundVisualizer
         android:id="@+id/soundVisualizerView"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="10dp"
+        android:layout_height="600dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@id/recordTimeTextView"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -22,11 +22,13 @@
         android:id="@+id/octaveText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:text="1옥타브"
+        android:layout_marginTop="10dp"
+        android:text="--"
         android:gravity="center"
         android:textColor="@color/white"
         android:textSize="14dp"
+        app:layout_constraintTop_toBottomOf="@id/soundVisualizerView"
+        app:layout_constraintStart_toEndOf="@id/recordButton"
         app:layout_constraintBottom_toTopOf="@id/noteText"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -35,24 +37,26 @@
         android:id="@+id/noteText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
         android:gravity="center"
-        android:text="A"
+        android:text="--"
+        android:layout_marginBottom="10dp"
         android:textColor="@color/white"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/recordButton"
+
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/soundVisualizerView" />
+        app:layout_constraintTop_toBottomOf="@id/octaveText" />
 
     <TextView
         android:id="@+id/pitchTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginEnd="40dp"
         android:text="0 hz"
         android:textColor="@color/white"
         android:textSize="20sp"
+        tools:ignore="HardcodedText"
+        app:layout_constraintStart_toEndOf="@id/recordButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/noteText" />
 
@@ -60,7 +64,7 @@
         android:id="@+id/resetButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/purple_500"
+        android:background="@drawable/bin_orange"
         android:text="RESET"
         app:layout_constraintBottom_toBottomOf="@id/recordButton"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -72,9 +76,12 @@
         android:id="@+id/recordTimeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="30dp"
         android:text="00:00"
+        android:textSize="25sp"
         android:textColor="@color/white"
+        android:fontFamily="@font/nanumsquareround"
         app:layout_constraintBottom_toTopOf="@id/recordButton"
         app:layout_constraintLeft_toLeftOf="@id/recordButton"
         app:layout_constraintRight_toRightOf="@id/recordButton"
@@ -84,11 +91,25 @@
         android:id="@+id/recordButton"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="100dp"
         android:background="@drawable/shape_oval_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
+    <Button
+        android:id="@+id/submit_Record"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/recordButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/bin_orange"
+        android:text="제출 / 분석"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

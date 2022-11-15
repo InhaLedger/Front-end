@@ -15,6 +15,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.inhaproject.karaoke3.databinding.ActivityLoginBinding
 import com.inhaproject.karaoke3.databinding.ActivityMainBinding
+import com.inhaproject.karaoke3.preference.App
 import com.inhaproject.karaoke3.retrofit.LoginResult
 import com.inhaproject.karaoke3.retrofit.RetroInterface.Companion.create
 import kotlinx.android.synthetic.main.activity_login.view.*
@@ -50,10 +51,7 @@ class LoginActivity: AppCompatActivity() {
 
                 val intent = Intent(this, MainActivity::class.java)
 
-                startActivity(intent)
-                finish()
-
-                /*create().login(email,password).enqueue(object:
+                  create().login(email,password).enqueue(object:
                     Callback<LoginResult>{
                     override fun onResponse(
                         call: Call<LoginResult>,
@@ -68,7 +66,8 @@ class LoginActivity: AppCompatActivity() {
                             dialog.show()
                         }
                         else {
-                            Toast.makeText(this@LoginActivity,"로그인에 성공하였습니다.",Toast.LENGTH_SHORT).show()
+                            App.prefs.token = login.token
+                            Toast.makeText(this@LoginActivity,"로그인에 성공하였습니다." + App.prefs.token,Toast.LENGTH_SHORT).show()
                             startActivity(intent)
                             finish()
                         }
@@ -83,7 +82,7 @@ class LoginActivity: AppCompatActivity() {
                         dialog.show()
                     }
 
-                })*/
+                })
 
             }
         }

@@ -7,20 +7,21 @@ import androidx.fragment.app.FragmentTransaction
 import com.inhaproject.karaoke3.databinding.ActivityMainBinding
 import com.inhaproject.karaoke3.ui.home.HomeFragment
 import com.inhaproject.karaoke3.ui.mypage.MyPageFragment
-import com.inhaproject.karaoke3.ui.basket.BasketFragment
+import com.inhaproject.karaoke3.ui.mysong.BasketFragment
 import com.inhaproject.karaoke3.ui.community.CommunityFragment
+
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         initBottomNavigation()
-
 
     }
 

@@ -11,7 +11,7 @@ import com.inhaproject.karaoke3.R
 import com.inhaproject.karaoke3.databinding.ItemCommunityBinding
 import com.inhaproject.karaoke3.ui.community.board.BoardActivity
 import com.inhaproject.karaoke3.ui.community.freeboard.FreeBoardActivity
-import com.inhaproject.karaoke3.ui.community.rangeboard.RangeBoardActivity
+import com.inhaproject.karaoke3.ui.community.noteboard.NoteBoardActivity
 
 class CommunityAdapter (fragment: CommunityFragment) : RecyclerView.Adapter<CommunityAdapter.ViewHolder>() {
 
@@ -39,13 +39,13 @@ class CommunityAdapter (fragment: CommunityFragment) : RecyclerView.Adapter<Comm
 
         fun bind(item: CommunityData) {
             txtName.text = item.name
-            txtSub.text = item.sub.toString()
+            txtSub.text = item.sub
             Glide.with(itemView).load(item.img).into(imgCommunity)
             itemView.setOnClickListener {
                 var intent = Intent(context, BoardActivity::class.java)
                 when(item.name) {
                     "코인노래방 패키지 추천 게시판" -> intent = Intent(context, BoardActivity::class.java)
-                    "음역대 정보 게시판" -> intent = Intent(context, RangeBoardActivity::class.java)
+                    "음역대 정보 게시판" -> intent = Intent(context, NoteBoardActivity::class.java)
                     "자유 게시판" -> intent = Intent(context, FreeBoardActivity::class.java)
                 }
                 intent.run { context.startActivity(this) }

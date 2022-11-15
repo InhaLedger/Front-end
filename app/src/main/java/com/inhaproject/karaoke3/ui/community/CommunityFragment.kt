@@ -10,8 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.inhaproject.karaoke3.R
 import com.inhaproject.karaoke3.databinding.FragmentCommunityBinding
 import com.inhaproject.karaoke3.recycler.DistanceItemDecorator
-import com.inhaproject.karaoke3.recycler.RankAdapter
-import kotlinx.android.synthetic.main.fragment_community.*
 
 class CommunityFragment: Fragment() {
 

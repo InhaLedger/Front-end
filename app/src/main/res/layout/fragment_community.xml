@@ -6,34 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.Toolbar
+    <include
         android:id="@+id/toolbar"
+        layout="@layout/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#8AAAE5"
-        app:layout_scrollFlags="scroll|enterAlways"
-        tools:ignore="MissingConstraints">
-
-        <TextView
-            android:id="@+id/toolbar_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:textColor="#fff"
-            android:textSize="20sp" />
-
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/action_search"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:searchIcon="@drawable/ic_baseline_search_white"
-            android:title="@string/title_search"
-            app:queryHint="검색어를 입력하세요"
-            app:iconifiedByDefault="true"
-            app:showAsAction="always"
-            android:maxWidth="644dp"
-            />
-    </androidx.appcompat.widget.Toolbar>
+        android:layout_height="wrap_content" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/community_RecyclerView"

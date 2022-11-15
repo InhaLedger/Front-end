@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/tool_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#8AAAE5"
@@ -21,18 +21,14 @@
             android:textColor="#fff"
             android:textSize="20sp" />
 
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/action_search"
-            android:layout_width="match_parent"
+        <ImageButton
+            android:id="@+id/search_button"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:searchIcon="@drawable/ic_baseline_search_white"
-
-            android:title="@string/title_search"
-            app:queryHint="검색어를 입력하세요"
-            app:iconifiedByDefault="true"
-            app:showAsAction="always"
-            android:maxWidth="644dp"
-            />
+            android:layout_gravity="end"
+            android:padding="10dp"
+            android:background="@color/color_theme"
+            android:src="@drawable/ic_baseline_search_white" />
     </androidx.appcompat.widget.Toolbar>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

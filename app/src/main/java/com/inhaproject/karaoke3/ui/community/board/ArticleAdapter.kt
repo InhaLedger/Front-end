@@ -2,37 +2,55 @@ package com.inhaproject.karaoke3.ui.community.board
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import android.content.Context
+import android.content.Intent
+import android.widget.TextView
+import com.inhaproject.karaoke3.R
 import com.inhaproject.karaoke3.databinding.ItemArticleBinding
-import java.text.SimpleDateFormat
 import java.util.*
 
-class ArticleAdapter:  ListAdapter<ArticleModel, ArticleAdapter.ViewHolder>(diffUtil){
+class ArticleAdapter(
+    private val articleList : ArrayList<PackArticleData>,
+    val context: Context)
+    :RecyclerView.Adapter<ArticleAdapter.ViewHolder>(){
 
     inner class ViewHolder(private val binding: ItemArticleBinding): RecyclerView.ViewHolder(binding.root){
 
-        fun bind(articleModel: ArticleModel) {
-            val format = SimpleDateFormat("MM월 dd일")
-            val date = Date(articleModel.createdAt)
+        val title: TextView = itemView.findViewById(R.id.titleTextView)
+        private val writer: TextView = itemView.findViewById(R.id.packWriterTextView)
+        private val price: TextView = itemView.findViewById(R.id.priceTextView)
+        private val vote: TextView = itemView.findViewById(R.id.likeTextView)
 
-            binding.titleTextView.text = articleModel.title
-            binding.dateTextView.text = format.format(date).toString()
-            binding.priceTextView.text = articleModel.price + " 패키지"
+
+
+        fun bind(articleModel: PackArticleData , context: Context?) {
+            val con = binding.root.context
+
+            title.text = articleModel.packtitle
+            writer.text = "작성자: " + articleModel.packwriter.toString()
+            price.text = articleModel.packidx.toString()
+            vote.text = articleModel.vote.toString()
+
+            itemView.setOnClickListener {
+                val intent = Intent(con, ReadPackActivity::class.java)
+                intent.putExtra("게시물 번호",articleModel.packidx.toString())
+                intent.run { con.startActivity(this) }
+            }
 
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(ItemArticleBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return ViewHolder(ItemArticleBinding.inflate(LayoutInflater.from(parent.context)
+            , parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(currentList[position])
+        holder.bind(articleList[position],context)
     }
 
-    companion object {
+    /*companion object {
         val diffUtil = object : DiffUtil.ItemCallback<ArticleModel>() {
             override fun areItemsTheSame(oldItem: ArticleModel, newItem: ArticleModel): Boolean {
                 return oldItem.createdAt == newItem.createdAt
@@ -42,5 +60,9 @@ class ArticleAdapter:  ListAdapter<ArticleModel, ArticleAdapter.ViewHolder>(diff
                 return oldItem == newItem
             }
         }
+    }*/
+
+    override fun getItemCount(): Int {
+        return articleList.count()
     }
 }

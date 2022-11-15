@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +14,7 @@ import com.inhaproject.karaoke3.databinding.FragmentCommunityBinding
 import com.inhaproject.karaoke3.recycler.DistanceItemDecorator
 import com.inhaproject.karaoke3.ui.community.CommunityAdapter
 import com.inhaproject.karaoke3.ui.community.CommunityData
+import kotlinx.android.synthetic.main.toolbar.*
 
 class MyPageFragment : Fragment() {
 

@@ -1,4 +1,4 @@
-package com.inhaproject.karaoke3.ui.basket
+package com.inhaproject.karaoke3.ui.mysong
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,21 +8,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.inhaproject.karaoke3.R
 import com.inhaproject.karaoke3.databinding.ItemBasketBinding
+import android.content.Context
 
-class BasketAdapter (fragment: BasketFragment) : RecyclerView.Adapter<BasketAdapter.ViewHolder>() {
+class BasketAdapter (private val MySongList : ArrayList<BasketData>, val context: Context)
+    : RecyclerView.Adapter<BasketAdapter.ViewHolder>() {
 
-    var datas = mutableListOf<BasketData>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemBasketBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding = ItemBasketBinding.inflate(LayoutInflater.from(parent.context),
+            parent,false)
 
         return ViewHolder(binding)
     }
 
 
-    override fun getItemCount(): Int = datas.size
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(datas[position])
+        holder.bind(MySongList[position])
     }
 
     inner class ViewHolder(private val binding: ItemBasketBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -33,11 +33,17 @@ class BasketAdapter (fragment: BasketFragment) : RecyclerView.Adapter<BasketAdap
 
 
         fun bind(item: BasketData) {
-            txtName.text = item.name
+            txtName.text = item.title
             txtSinger.text = item.singer
-            Glide.with(itemView).load(item.img).into(imgBasket)
+            Glide.with(itemView).load(item.imageurl).into(imgBasket)
+
+
 
         }
+    }
+
+    override fun getItemCount(): Int {
+        return MySongList.count()
     }
 
 
