@@ -60,8 +60,6 @@ class RankFragment : Fragment() {
                 if (response.body().toString().isNotEmpty()) {
                     response.body().let {
                         rankList = response.body()!!
-                        Toast.makeText(mainActivity,"랭킹 서버 연결 성공 " +response.code()
-                            ,Toast.LENGTH_SHORT).show()
                         setRankAdapter(rankList)
                     }
                 }

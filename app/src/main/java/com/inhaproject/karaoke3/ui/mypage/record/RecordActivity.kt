@@ -5,6 +5,8 @@ import android.content.Intent
 import android.content.pm.PackageManager
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 
 import android.widget.Button
 import android.widget.Toast
@@ -143,7 +145,14 @@ class RecordActivity : AppCompatActivity() {
         recordButton.setOnClickListener {
             when(state) {
                 State.BEFORE_RECORDING -> {
+                    recordSub.text = "3초간 높은 음을 내주세요"
                     startRecording()
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        recordSub.text = "3초간 낮은 음을 내주세요"
+                    },3000)
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        recordSub.text = "wndwl"
+                    },6000)
                 }
                 State.ON_RECORDING -> {
                     stopRecording()

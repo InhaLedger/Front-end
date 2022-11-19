@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
+
+
+
+    <TextView
+        android:id="@+id/pack_Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:text="게시물 제목"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <TextView
+        android:id="@+id/pack_Writer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:text="작성자: "
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pack_Title" />
+
+    <TextView
+        android:id="@+id/pack_Package"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:text="패키지 구성:"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pack_Writer" />
+
+    <View
+        android:id="@+id/pack_Line"
+        android:background="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="2px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/pack_Package"
+        app:layout_constraintTop_toBottomOf="@id/pack_Package"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:id="@+id/pack_Content"
+        android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/pack_Line"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="글 내용 입니다. "
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"/>
+
+    <ImageButton
+        android:id="@+id/pack_Like"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pack_Content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/like_icon"
+        android:background="@drawable/bg_like_button"
+        android:layout_marginStart="100dp"/>
+
+    <TextView
+        android:id="@+id/pack_Like_TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pack_Like"
+        android:layout_marginStart="125dp"
+        android:text="123"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <ImageButton
+        android:id="@+id/pack_Dislike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pack_Content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/dislike_icon"
+        android:background="@drawable/bg_like_button"
+        android:layout_marginEnd="100dp"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

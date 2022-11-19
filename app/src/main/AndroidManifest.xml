@@ -62,6 +62,8 @@
         <activity android:name=".ui.community.noteboard.NoteAddArticleActivity" />
         <activity android:name=".ui.community.noteboard.NoteSearchActivity" />
         <activity android:name=".ui.community.noteboard.ReadNoteActivity" />
+        <activity android:name=".ui.mypage.mynote.MyNoteActivity"/>
+        <activity android:name=".ui.mypage.mynote.MyNoteModifyActivity"/>
     </application>
 
 </manifest>

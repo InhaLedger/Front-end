@@ -6,6 +6,7 @@ import com.inhaproject.karaoke3.SearchData
 import com.inhaproject.karaoke3.ui.community.board.PackArticleData
 import com.inhaproject.karaoke3.ui.community.noteboard.NoteArticleData
 import com.inhaproject.karaoke3.ui.home.RankData
+import com.inhaproject.karaoke3.ui.mypage.mynote.MyNoteData
 import com.inhaproject.karaoke3.ui.mysong.BasketData
 import okhttp3.OkHttpClient
 import retrofit2.Call
@@ -50,7 +51,8 @@ interface RetroInterface{
     fun packWrite(
         @Field("title") title:String,
         @Field("content") content:String,
-        @Field("packlist") packlist:String
+        @Field("packlist") packlist:String,
+        @Field("packprice") packprice:String
     ) : Call<Response<Void>>
 
     @GET("/rank")
@@ -65,6 +67,7 @@ interface RetroInterface{
     @FormUrlEncoded
     @POST("/searchsong")
     fun searchSong(
+        @Field("no") no : String,
         @Field("title") title: String,
         @Field("singer") singer: String,
         @Field("album") album : String,
@@ -123,9 +126,11 @@ interface RetroInterface{
         @Field("no") no : String
     ) : Call<String>
 
+    @GET("/showmynote")
+    fun showMyNote() : Call<ArrayList<MyNoteData>>
 
     companion object { // static 처럼 공유객체로 사용가능함. 모든 인스턴스가 공유하는 객체로서 동작함.
-        private const val BASE_URL = "http://52.79.214.156:3000" //
+        private const val BASE_URL = "http://3.34.189.21:3000/" //
 
         fun create(): RetroInterface {
             val gson : Gson =   GsonBuilder().setLenient().create()

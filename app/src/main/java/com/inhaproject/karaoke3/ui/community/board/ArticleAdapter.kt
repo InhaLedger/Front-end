@@ -22,14 +22,17 @@ class ArticleAdapter(
         private val price: TextView = itemView.findViewById(R.id.priceTextView)
         private val vote: TextView = itemView.findViewById(R.id.likeTextView)
 
-
-
         fun bind(articleModel: PackArticleData , context: Context?) {
             val con = binding.root.context
 
+            if (articleModel.packprice == "")
+                price.text = "1000원"
+            else
+                price.text = articleModel.packprice +"원"
+
             title.text = articleModel.packtitle
             writer.text = "작성자: " + articleModel.packwriter.toString()
-            price.text = articleModel.packidx.toString()
+
             vote.text = articleModel.vote.toString()
 
             itemView.setOnClickListener {
