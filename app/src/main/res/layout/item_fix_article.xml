@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="16dp"
+    android:paddingTop="8dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="16dp"
+    >
+
+    <TextView
+        android:id="@+id/fix_SongTitleTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/fix_likeTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <TextView
+        android:id="@+id/fix_SingerTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/fix_likeTextView"
+        app:layout_constraintStart_toStartOf="@id/fix_SongTitleTextView"
+        app:layout_constraintTop_toBottomOf="@id/fix_SongTitleTextView" />
+
+    <TextView
+        android:id="@+id/fix_releaseDate_TextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/fix_SongTitleTextView"
+        app:layout_constraintEnd_toStartOf="@id/fix_likeTextView"
+        app:layout_constraintTop_toBottomOf="@id/fix_SingerTextView" />
+
+    <TextView
+        android:id="@+id/fix_likeTextView"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:text="5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:drawableLeftCompat="@drawable/ic_baseline_thumb_up_24" />
+
+    <TextView
+        android:id="@+id/fix_WriterTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@id/fix_likeTextView"
+        app:layout_constraintStart_toStartOf="@id/fix_SongTitleTextView"
+        app:layout_constraintTop_toBottomOf="@id/fix_releaseDate_TextView" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
