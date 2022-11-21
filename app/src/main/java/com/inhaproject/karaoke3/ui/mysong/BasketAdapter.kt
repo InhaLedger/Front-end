@@ -11,6 +11,8 @@ import android.util.Log
 import android.view.MenuItem
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import com.inhaproject.karaoke3.retrofit.RetroInterface
 import retrofit2.Call
 import retrofit2.Callback
@@ -20,6 +22,8 @@ class BasketAdapter (private val MySongList : ArrayList<BasketData>, val context
     : RecyclerView.Adapter<BasketAdapter.ViewHolder>() {
 
     var no = ""
+    var pos = 0
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemBasketBinding.inflate(LayoutInflater.from(parent.context),
@@ -30,6 +34,7 @@ class BasketAdapter (private val MySongList : ArrayList<BasketData>, val context
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        pos = position
         holder.bind(MySongList[position])
     }
 
@@ -83,6 +88,9 @@ class BasketAdapter (private val MySongList : ArrayList<BasketData>, val context
                                         Toast.makeText(
                                             context, "즐겨찾기에서 삭제되었습니다. ", Toast.LENGTH_SHORT
                                         ).show()
+
+                                        MySongList.removeAt(pos)
+                                        notifyItemRemoved(pos)
                                     }
                                 }
 
@@ -105,8 +113,24 @@ class BasketAdapter (private val MySongList : ArrayList<BasketData>, val context
     }
 
     override fun getItemCount(): Int {
-        return MySongList.count()
+        return MySongList.size
     }
 
+    object MyDiffCallback : DiffUtil.ItemCallback<BasketData>() {
+        override fun areItemsTheSame(
+            oldItem: BasketData,
+            newItem: BasketData
+        ): Boolean {
+            return oldItem.no == newItem.no
+        }
+
+        override fun areContentsTheSame(
+            oldItem: BasketData,
+            newItem: BasketData
+        ): Boolean {
+            return oldItem == newItem
+        }
+
+    }
 
 }

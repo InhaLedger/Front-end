@@ -10,6 +10,7 @@ data class NoteArticleData(
     val note_writer: Int,
     val vote: Int,
     val voteusers: String,
+    val userid : String,
     val title : String,
     val singer : String
 )

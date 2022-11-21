@@ -38,6 +38,7 @@ class BasketFragment : Fragment() {
         mainActivity = context as MainActivity
     }
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

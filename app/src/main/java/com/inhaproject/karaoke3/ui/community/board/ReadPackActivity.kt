@@ -27,7 +27,6 @@ class ReadPackActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_read_pack)
 
-
         val packTitle = findViewById<TextView>(R.id.pack_Title)
         val packWriter = findViewById<TextView>(R.id.pack_Writer)
         val packLike = findViewById<TextView>(R.id.pack_Like_TextView)
@@ -87,7 +86,7 @@ class ReadPackActivity: AppCompatActivity() {
             }
             override fun onFailure(call: Call<ArrayList<PackArticleData>>, t: Throwable) {
                 Toast.makeText(this@ReadPackActivity,"글 정보 불러오기 실패", Toast.LENGTH_SHORT).show()
-                Log.d("pack_read 실패", t.message.toString());
+                Log.d("pack_read 실패", t.message.toString())
             }
 
         })

@@ -35,6 +35,7 @@ class NoteSearchActivity: AppCompatActivity() {
         result.clear()
 
         val searchView : SearchView = findViewById(R.id.note_search_song)
+
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 api.searchSong("",query.toString(),"","","","","","").enqueue(object : Callback<
@@ -46,8 +47,6 @@ class NoteSearchActivity: AppCompatActivity() {
                         if (response.body().toString().isNotEmpty()) {
                             response.body().let {
                                 result = response.body()!!
-                                Toast.makeText(this@NoteSearchActivity,"검색 서버 연결 성공"
-                                        +response.code(), Toast.LENGTH_SHORT).show()
                                 setSearchAdapter(result)
 
                             }

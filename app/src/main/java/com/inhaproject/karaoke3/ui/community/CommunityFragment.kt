@@ -35,7 +35,8 @@ class CommunityFragment: Fragment() {
         data.apply {
             add(CommunityData(img = R.drawable.giftbox, name = "코인노래방 패키지 추천 게시판", sub = "유저들이 직접 추천해주는 코인노래방 패키지 게시판 입니다. 자신만의 패키지를 공유해주세요!"))
             add(CommunityData(img = R.drawable.music_note, name = "음역대 정보 게시판", sub = "데이터에 없는 음역대 정보가 있나요? 음역대 정보를 게시하고 보상을 받아보세요!"))
-            add(CommunityData(img = R.drawable.group, name = "자유 게시판", sub = "자유롭게 얘기할 수 있는 게시판입니다."))
+            add(CommunityData(img = R.drawable.noteboard_icon, name = "신곡 게시판", sub = "신곡 정보를 공유하는 게시판입니다."))
+            add(CommunityData(img = R.drawable.repair, name = "수정 게시판", sub = "기존 곡 정보를 수정하는 게시판입니다. 정확하지 않은 데이터를 알려주세요!"))
 
             binding.communityRecyclerView.addItemDecoration(DistanceItemDecorator(15))
             binding.communityRecyclerView.addItemDecoration(

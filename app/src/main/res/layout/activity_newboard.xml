@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:attr/colorBackground">
+    android:background="?android:attr/colorBackground"
+    tools:context=".ui.community.board.BoardActivity">
 
     <include
         android:id="@+id/toolbar"
@@ -13,7 +14,7 @@
         android:layout_height="wrap_content" />
 
     <ImageView
-        android:id="@+id/noteBoardImage"
+        android:id="@+id/newBoardImage"
         android:layout_width="30dp"
         android:layout_height="30dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,21 +23,20 @@
         android:layout_marginStart="16dp"
         android:src="@drawable/noteboard_icon"
         />
-
     <TextView
-        android:id="@+id/noteBoardSub"
+        android:id="@+id/newBoardSub"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="음역대 게시판"
+        android:text="신곡 게시판"
         android:textSize="25sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/noteBoardImage"
+        app:layout_constraintStart_toEndOf="@id/newBoardImage"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/note_article_RecyclerView"
+        android:id="@+id/new_article_RecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
@@ -44,18 +44,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/noteBoardSub"
+        app:layout_constraintTop_toBottomOf="@id/newBoardSub"
         app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/note_addFloatingButton"
+        android:id="@+id/new_addFloatingButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:backgroundTint="@color/color_theme"
         android:src="@drawable/ic_baseline_edit_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,7 +10,8 @@ import com.bumptech.glide.Glide
 import com.inhaproject.karaoke3.R
 import com.inhaproject.karaoke3.databinding.ItemCommunityBinding
 import com.inhaproject.karaoke3.ui.community.board.BoardActivity
-import com.inhaproject.karaoke3.ui.community.freeboard.FreeBoardActivity
+import com.inhaproject.karaoke3.ui.community.fixboard.FixBoardActivity
+import com.inhaproject.karaoke3.ui.community.newboard.NewBoardActivity
 import com.inhaproject.karaoke3.ui.community.noteboard.NoteBoardActivity
 
 class CommunityAdapter (fragment: CommunityFragment) : RecyclerView.Adapter<CommunityAdapter.ViewHolder>() {
@@ -46,7 +47,8 @@ class CommunityAdapter (fragment: CommunityFragment) : RecyclerView.Adapter<Comm
                 when(item.name) {
                     "코인노래방 패키지 추천 게시판" -> intent = Intent(context, BoardActivity::class.java)
                     "음역대 정보 게시판" -> intent = Intent(context, NoteBoardActivity::class.java)
-                    "자유 게시판" -> intent = Intent(context, FreeBoardActivity::class.java)
+                    "신곡 게시판" -> intent = Intent(context, NewBoardActivity::class.java)
+                    "수정 게시판" -> intent = Intent(context, FixBoardActivity::class.java)
                 }
                 intent.run { context.startActivity(this) }
             }

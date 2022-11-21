@@ -4,6 +4,8 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.inhaproject.karaoke3.SearchData
 import com.inhaproject.karaoke3.ui.community.board.PackArticleData
+import com.inhaproject.karaoke3.ui.community.fixboard.FixArticleData
+import com.inhaproject.karaoke3.ui.community.newboard.NewArticleData
 import com.inhaproject.karaoke3.ui.community.noteboard.NoteArticleData
 import com.inhaproject.karaoke3.ui.home.RankData
 import com.inhaproject.karaoke3.ui.mypage.mynote.MyNoteData
@@ -107,6 +109,68 @@ interface RetroInterface{
     @POST("/notevote")
     fun noteLike(
         @Field("noteidx") noteidx: String
+    ) : Call<String>
+
+    // 신곡 게시판 API
+    @GET("/newboard")
+    fun newBoardList() : Call<ArrayList<NewArticleData>>
+
+    @GET("/newread")
+    fun newRead(
+        @Query("newidx") newidx:String
+    ) : Call<ArrayList<NewArticleData>>
+
+    @FormUrlEncoded
+    @POST("/newwrite")
+    fun newWrite(
+        @Field("board_title") board_title : String,
+        @Field("board_content") board_content : String,
+        @Field("no") no : String,
+        @Field("title") title : String,
+        @Field("content") content : String,
+        @Field("singer") singer : String,
+        @Field("composer") composer : String,
+        @Field("lyricist") lyricist : String,
+        @Field("releasedate") releasedate : String,
+        @Field("album") album : String,
+        @Field("imageurl") imageurl : String,
+    ): Call<String>
+
+    @FormUrlEncoded
+    @POST("/newvote")
+    fun newLike(
+        @Field("newidx") newidx: String
+    ) : Call<String>
+
+    //수정 게시판 API
+    @GET("/fixboard")
+    fun fixBoardList() : Call<ArrayList<FixArticleData>>
+
+    @GET("/fixread")
+    fun fixRead(
+        @Query("fixidx") fixidx:String
+    ) : Call<ArrayList<FixArticleData>>
+
+    @FormUrlEncoded
+    @POST("/fixwrite")
+    fun fixWrite(
+        @Field("board_title") board_title : String,
+        @Field("board_content") board_content : String,
+        @Field("no") no : String,
+        @Field("title") title : String,
+        @Field("content") content : String,
+        @Field("singer") singer : String,
+        @Field("composer") composer : String,
+        @Field("lyricist") lyricist : String,
+        @Field("releasedate") releasedate : String,
+        @Field("album") album : String,
+        @Field("imageurl") imageurl : String,
+    ): Call<String>
+
+    @FormUrlEncoded
+    @POST("/fixvote")
+    fun fixLike(
+        @Field("fixidx") fixidx: String
     ) : Call<String>
 
 

@@ -30,7 +30,7 @@ class NoteArticleAdapter(
 
             title.text = articleModel.title
             singer.text = articleModel.singer
-            writer.text = "작성자: " + articleModel.note_writer.toString()
+            writer.text = "작성자: " + articleModel.userid
             highNote.text = "최고 음: "+articleModel.highNote
             lowNote.text = "최저 음: "+articleModel.lowNote
             like.text = articleModel.vote.toString()

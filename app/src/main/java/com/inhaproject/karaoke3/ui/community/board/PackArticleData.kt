@@ -8,5 +8,6 @@ data class PackArticleData(
     val packwriter: Int,
     val vote: Int,
     val packprice : String,
-    val voteusers: Any
+    val voteusers: Any,
+    val userid : String
 )

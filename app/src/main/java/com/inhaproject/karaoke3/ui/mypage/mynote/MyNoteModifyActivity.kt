@@ -96,7 +96,10 @@ class MyNoteModifyActivity: AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("최고 음")
         val itemList = arrayOf("0옥타브 도","0옥타브 레","0옥타브 미","0옥타브 파"
-        ,"0옥타브 솔","0옥타브 라","0옥타브 시","1옥타브 도")
+        ,"0옥타브 솔","0옥타브 라","0옥타브 시","1옥타브 도","1옥타브 레","1옥타브 미","1옥타브 파",
+            "1옥타브 솔","1옥타브 라","1옥타브 시","2옥타브 도","2옥타브 레","2옥타브 미","2옥타브 파",
+            "2옥타브 솔","2옥타브 라","2옥타브 시","3옥타브 도","3옥타브 레","3옥타브 미","3옥타브 파",
+            "3옥타브 솔","3옥타브 라","3옥타브 시","4옥타브 도",)
 
         builder.setSingleChoiceItems(itemList,checkedIndex) {
             dialog, which -> checkedIndex = which

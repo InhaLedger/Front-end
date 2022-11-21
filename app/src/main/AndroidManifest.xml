@@ -52,7 +52,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".ui.community.board.AddArticleActivity" />
-        <activity android:name=".ui.community.freeboard.FreeBoardActivity" />
+        <activity android:name=".ui.community.newboard.NewBoardActivity" />
         <activity android:name=".ui.community.noteboard.NoteBoardActivity" />
         <activity android:name=".ui.community.board.BoardActivity" />
         <activity android:name=".ui.mypage.record.RecordActivity" />
@@ -62,8 +62,13 @@
         <activity android:name=".ui.community.noteboard.NoteAddArticleActivity" />
         <activity android:name=".ui.community.noteboard.NoteSearchActivity" />
         <activity android:name=".ui.community.noteboard.ReadNoteActivity" />
-        <activity android:name=".ui.mypage.mynote.MyNoteActivity"/>
-        <activity android:name=".ui.mypage.mynote.MyNoteModifyActivity"/>
+        <activity android:name=".ui.mypage.mynote.MyNoteActivity" />
+        <activity android:name=".ui.mypage.mynote.MyNoteModifyActivity" />
+        <activity android:name=".ui.community.fixboard.FixBoardActivity" />
+        <activity android:name=".ui.community.newboard.NewAddArticleActivity" />
+        <activity android:name=".ui.community.newboard.ReadNewActivity"/>
+        <activity android:name=".ui.community.fixboard.FixAddArticleActivity"/>
+        <activity android:name=".ui.community.fixboard.FixSearchActivity"/>
     </application>
 
 </manifest>

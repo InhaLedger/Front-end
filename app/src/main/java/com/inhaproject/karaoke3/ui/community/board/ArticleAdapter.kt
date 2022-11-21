@@ -31,7 +31,7 @@ class ArticleAdapter(
                 price.text = articleModel.packprice +"원"
 
             title.text = articleModel.packtitle
-            writer.text = "작성자: " + articleModel.packwriter.toString()
+            writer.text = "작성자: " + articleModel.userid
 
             vote.text = articleModel.vote.toString()
 
