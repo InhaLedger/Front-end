@@ -1,6 +1,7 @@
 package com.inhaproject.karaoke3.ui.home
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.inhaproject.karaoke3.R
+import com.inhaproject.karaoke3.SongDetailActivity
 import com.inhaproject.karaoke3.databinding.ItemRankBinding
 import com.inhaproject.karaoke3.retrofit.RetroInterface
 import retrofit2.Call
@@ -33,7 +35,7 @@ class RankAdapter(private val RankList : ArrayList<RankData>, val context: Conte
         private val starBox : CheckBox = itemView.findViewById(R.id.checkbox_basket)
 
 
-        fun bind(rankModel: RankData) {
+        fun bind(rankModel: RankData, context: Context?) {
             rank.text = rankModel.rankidx.toString()
             title.text = rankModel.title
             singer.text = rankModel.singer
@@ -42,12 +44,26 @@ class RankAdapter(private val RankList : ArrayList<RankData>, val context: Conte
 
             val no = rankModel.no.toString()
 
-            var tempStar = 0
-
             if(rankModel.alreadystar == 1){
                 starBox.isChecked = true
             }
 
+            itemView.setOnClickListener {
+                val intent = Intent(context, SongDetailActivity::class.java)
+
+                intent.putExtra("노래 제목",rankModel.title)
+                intent.putExtra("가수",rankModel.singer)
+                intent.putExtra("번호",rankModel.no.toString())
+                intent.putExtra("발매일",rankModel.releasedate.substring(0 until 10))
+                intent.putExtra("작곡자",rankModel.composer)
+                intent.putExtra("작사자",rankModel.lyricist)
+                intent.putExtra("앨범 제목",rankModel.album)
+                intent.putExtra("앨범 이미지",rankModel.imageurl)
+
+                intent.run {
+                    context?.startActivity(this)
+                }
+            }
 
             starBox.setOnCheckedChangeListener { buttonView, isChecked ->
                 if (isChecked){
@@ -100,7 +116,7 @@ class RankAdapter(private val RankList : ArrayList<RankData>, val context: Conte
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(RankList[position])
+        holder.bind(RankList[position], context)
     }
 
     override fun getItemCount(): Int {

@@ -38,6 +38,8 @@ class NoteArticleAdapter(
             itemView.setOnClickListener {
                 val intent = Intent(con, ReadNoteActivity::class.java)
                 intent.putExtra("음역대 게시물 번호",articleModel.noteidx.toString())
+                intent.putExtra("노래 제목",articleModel.title)
+                intent.putExtra("가수",articleModel.singer)
                 intent.run { con.startActivity(this) }
             }
         }

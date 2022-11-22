@@ -47,8 +47,8 @@ class ReadNoteActivity: AppCompatActivity() {
                     response.body().let {
                         noteTitle.text = response.body()?.get(0)?.note_title
                         noteWriter.text = "작성자 : " + response.body()?.get(0)?.note_writer
-                        songTitle.text = "노래 제목 : " + response.body()?.get(0)?.title
-                        singer.text = "가수 : " + response.body()?.get(0)?.singer
+                        songTitle.text = "노래 제목 : " + intent.getStringExtra("노래 제목")
+                        singer.text = "가수 : " + intent.getStringExtra("가수")
                         noteLike.text = response.body()?.get(0)?.vote.toString()
                         noteHighNote.text = "최고 음: " + response.body()?.get(0)?.highNote
                         noteLowNote.text = "최저 음: " + response.body()?.get(0)?.lowNote

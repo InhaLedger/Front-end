@@ -2,11 +2,11 @@ package com.inhaproject.karaoke3.ui.home
 
 data class RankData(
     val rankidx: Int,
-    val album: Any,
+    val album: String,
     val brand: String,
     val composer: String,
     val highNote: Int,
-    val imageurl: Any,
+    val imageurl: String,
     val lowNote: Int,
     val lyricist: String,
     val no: Int,

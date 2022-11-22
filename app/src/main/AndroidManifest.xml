@@ -66,9 +66,11 @@
         <activity android:name=".ui.mypage.mynote.MyNoteModifyActivity" />
         <activity android:name=".ui.community.fixboard.FixBoardActivity" />
         <activity android:name=".ui.community.newboard.NewAddArticleActivity" />
-        <activity android:name=".ui.community.newboard.ReadNewActivity"/>
-        <activity android:name=".ui.community.fixboard.FixAddArticleActivity"/>
-        <activity android:name=".ui.community.fixboard.FixSearchActivity"/>
+        <activity android:name=".ui.community.newboard.ReadNewActivity" />
+        <activity android:name=".ui.community.fixboard.FixAddArticleActivity" />
+        <activity android:name=".ui.community.fixboard.FixSearchActivity" />
+        <activity android:name=".ui.community.fixboard.ReadFixActivity" />
+        <activity android:name=".SongDetailActivity" />
     </application>
 
 </manifest>

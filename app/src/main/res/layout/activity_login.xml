@@ -59,6 +59,7 @@
             android:layout_height="50dp"
             android:background="@drawable/edittext_border"
             android:fontFamily="@font/nanumsquareround"
+            android:inputType="textPassword"
             android:hint="Password" />
     </com.google.android.material.textfield.TextInputLayout>
 
