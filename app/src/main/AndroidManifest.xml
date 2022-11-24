@@ -71,6 +71,7 @@
         <activity android:name=".ui.community.fixboard.FixSearchActivity" />
         <activity android:name=".ui.community.fixboard.ReadFixActivity" />
         <activity android:name=".SongDetailActivity" />
+        <activity android:name=".ui.mypage.mysearch.MySearchActivity"/>
     </application>
 
 </manifest>

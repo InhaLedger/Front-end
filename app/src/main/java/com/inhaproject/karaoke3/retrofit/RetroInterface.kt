@@ -190,8 +190,14 @@ interface RetroInterface{
         @Field("no") no : String
     ) : Call<String>
 
+    // 마이 페이지
     @GET("/showmynote")
     fun showMyNote() : Call<ArrayList<MyNoteData>>
+
+    @GET("/mysearch")
+    fun mySearch() : Call<ArrayList<SearchData>>
+
+
 
     companion object { // static 처럼 공유객체로 사용가능함. 모든 인스턴스가 공유하는 객체로서 동작함.
         private const val BASE_URL = "http://3.34.189.21:3000/" //
