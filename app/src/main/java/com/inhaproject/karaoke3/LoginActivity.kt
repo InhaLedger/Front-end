@@ -67,7 +67,8 @@ class LoginActivity: AppCompatActivity() {
                         }
                         else {
                             App.prefs.token = login.token
-                            Toast.makeText(this@LoginActivity,"로그인에 성공하였습니다." + App.prefs.token,Toast.LENGTH_SHORT).show()
+                            App.prefs.id = email
+                            Toast.makeText(this@LoginActivity,"로그인에 성공하였습니다." ,Toast.LENGTH_SHORT).show()
                             startActivity(intent)
                             finish()
                         }

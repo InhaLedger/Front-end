@@ -10,6 +10,7 @@ import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.inhaproject.karaoke3.MainActivity
 import com.inhaproject.karaoke3.SearchData
@@ -76,6 +77,10 @@ class BasketFragment : Fragment() {
     private fun setMySongAdapter(mySongDataList : ArrayList<BasketData>) {
         basketAdapter = BasketAdapter(mySongDataList, mainActivity)
 
+        val itemTouchHelperCallback = ItemTouchHelperCallback(basketAdapter)
+        val helper = ItemTouchHelper(itemTouchHelperCallback)
+
+        helper.attachToRecyclerView(binding.basketRecyclerView)
         binding.basketRecyclerView.layoutManager = LinearLayoutManager(mainActivity)
         binding.basketRecyclerView.adapter = basketAdapter
         binding.basketRecyclerView.addItemDecoration(DistanceItemDecorator(15))

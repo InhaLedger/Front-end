@@ -13,13 +13,14 @@ import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.inhaproject.karaoke3.retrofit.RetroInterface
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class BasketAdapter (private val MySongList : ArrayList<BasketData>, val context: Context)
-    : RecyclerView.Adapter<BasketAdapter.ViewHolder>() {
+    : RecyclerView.Adapter<BasketAdapter.ViewHolder>(), ItemTouchHelperListener {
 
     var no = ""
     var pos = 0
@@ -116,6 +117,7 @@ class BasketAdapter (private val MySongList : ArrayList<BasketData>, val context
         return MySongList.size
     }
 
+
     object MyDiffCallback : DiffUtil.ItemCallback<BasketData>() {
         override fun areItemsTheSame(
             oldItem: BasketData,
@@ -131,6 +133,22 @@ class BasketAdapter (private val MySongList : ArrayList<BasketData>, val context
             return oldItem == newItem
         }
 
+    }
+
+    override fun onItemMove(from_position: Int, to_position: Int): Boolean {
+        val name = MySongList[from_position]
+        // 리스트 갱신
+        MySongList.removeAt(from_position)
+        MySongList.add(to_position, name)
+
+        // fromPosition에서 toPosition으로 아이템 이동 공지
+        notifyItemMoved(from_position, to_position)
+        return true
+    }
+
+    override fun onItemSwipe(position: Int) {
+        MySongList.removeAt(position)
+        notifyItemRemoved(position)
     }
 
 }

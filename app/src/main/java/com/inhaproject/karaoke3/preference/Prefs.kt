@@ -12,6 +12,9 @@ class Prefs (context: Context) {
         set(value) {
             prefs.edit().putString("token",value).apply()
         }
-
-
+    var id:String?
+        get() = prefs.getString("id",null)
+        set(value) {
+            prefs.edit().putString("id",value).apply()
+        }
 }

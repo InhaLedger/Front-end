@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.inhaproject.karaoke3.databinding.FragmentMypageBinding
 import com.inhaproject.karaoke3.R
 import com.inhaproject.karaoke3.databinding.FragmentCommunityBinding
+import com.inhaproject.karaoke3.preference.App
 import com.inhaproject.karaoke3.recycler.DistanceItemDecorator
 import com.inhaproject.karaoke3.ui.community.CommunityAdapter
 import com.inhaproject.karaoke3.ui.community.CommunityData
@@ -30,6 +31,8 @@ class MyPageFragment : Fragment() {
         binding = FragmentMypageBinding.inflate(inflater, container, false)
 
         initRecycler()
+
+        binding.userNameTextView.text = App.prefs.id
 
         return binding.root
     }

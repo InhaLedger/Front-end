@@ -13,9 +13,12 @@
     <color name="colorGray">#777777</color>
     <color name="gray_cc">#cccccc</color>
     <color name="colorMint">#CFFFE5</color>
-    <color name="colorPrimary">#FFFFFF</color>
-    <color name="colorPrimaryDark">#FFFFFF</color>
-    <color name="colorAccent">#FFFFFF</color>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="textColorPrimary">@color/white</color>
+    <color name="textColorSecondary">#E0E0E0</color>
     <color name="textInputLayout">#96ffffff</color>
     <color name="colorRealGray">#434343</color>
     <color name="gray_ec">#ececec</color>
@@ -27,4 +30,6 @@
     <color name="dark_gray">#FF212121</color>
     <color name="color_orange">#FFA048</color>
     <color name="theme_70">#B38AAAE5</color>
+    <color name="light_blue">#0288D1</color>
+    <color name="hint">#f7faff</color>
 </resources>
