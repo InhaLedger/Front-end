@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/coinImage"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:src="@drawable/coin"
+        />
+    <TextView
+        android:id="@+id/coinSub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="코인 관리"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/coinImage"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <LinearLayout
+        android:layout_marginTop="80dp"
+        android:id="@+id/coin_Linear_Layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/coinImage"
+        android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/holding_coin_Image_View"
+        android:src="@drawable/coin"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="6dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="총 보유 코인"
+        android:layout_marginStart="20dp"
+        android:textSize="25sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/holding_Coin_manage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="15dp"
+        android:text="500"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="@color/color_coin"
+        />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="40dp"
+        android:id="@+id/ava_coin_Linear_Layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/coin_Linear_Layout">
+
+    <ImageView
+        android:id="@+id/coin_Image_View"
+        android:src="@drawable/available_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="6dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="사용 가능 코인"
+        android:layout_marginStart="20dp"
+        android:textSize="25sp"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/holding_Coin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="15dp"
+        android:text="300"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="@color/color_coin"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corner_button_coin"
+        android:textColor="@color/white"
+        android:layout_marginStart="25dp"
+        android:text="송금"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="40dp"
+        android:id="@+id/deposited_coin_Linear_Layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/ava_coin_Linear_Layout">
+
+        <ImageView
+            android:id="@+id/deposited_coin_Image_View"
+            android:layout_width="43dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="6dp"
+            android:src="@drawable/deposit_icon" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="예치된 코인"
+        android:layout_marginStart="20dp"
+        android:textSize="25sp"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/deposited_Coin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="15dp"
+        android:text="200"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="@color/gray"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corner_button_gray"
+        android:textColor="@color/white"
+        android:layout_marginStart="50dp"
+        android:text="상세 정보"/>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
