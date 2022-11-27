@@ -72,6 +72,9 @@
         <activity android:name=".ui.community.fixboard.ReadFixActivity" />
         <activity android:name=".SongDetailActivity" />
         <activity android:name=".ui.mypage.mysearch.MySearchActivity"/>
+        <activity android:name=".ui.mypage.coin.CoinActivity"/>
+        <activity android:name=".ui.mypage.coin.TransferActivity"/>
+        <activity android:name=".ui.mypage.coin.DepositActivity"/>
     </application>
 
 </manifest>

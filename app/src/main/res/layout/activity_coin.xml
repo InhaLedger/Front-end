@@ -50,30 +50,34 @@
         android:layout_marginBottom="6dp"/>
 
     <TextView
+        android:id="@+id/holdingCoinAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="총 보유 코인"
         android:layout_marginStart="20dp"
-        android:textSize="25sp"
+        android:textSize="22sp"
         android:textStyle="bold"/>
+
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/holding_Coin_manage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="80dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/coin_Linear_Layout"
         android:text="500"
         android:textSize="25sp"
         android:textStyle="bold"
         android:textColor="@color/color_coin"
         />
 
-    </LinearLayout>
-
     <LinearLayout
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:id="@+id/ava_coin_Linear_Layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -92,30 +96,35 @@
         android:layout_marginTop="4dp"
         android:text="사용 가능 코인"
         android:layout_marginStart="20dp"
-        android:textSize="25sp"
+        android:textSize="22sp"
         android:textStyle="bold"/>
+    <Button
+        android:id="@+id/moveTransferButton"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corner_button_coin"
+        android:textColor="@color/white"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="16dp"
+        android:text="송금"/>
+    </LinearLayout>
+
     <TextView
         android:id="@+id/holding_Coin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="80dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ava_coin_Linear_Layout"
         android:text="300"
         android:textSize="25sp"
         android:textStyle="bold"
         android:textColor="@color/color_coin"
         />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/corner_button_coin"
-        android:textColor="@color/white"
-        android:layout_marginStart="25dp"
-        android:text="송금"/>
-    </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:id="@+id/deposited_coin_Linear_Layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -133,26 +142,32 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="예치된 코인"
-        android:layout_marginStart="20dp"
-        android:textSize="25sp"
+        android:layout_marginStart="16dp"
+        android:textSize="22sp"
         android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/moveDetailDepositButton"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corner_button_gray"
+        android:textColor="@color/white"
+        android:layout_marginStart="52dp"
+        android:layout_marginEnd="20dp"
+        android:text="상세 정보"/>
+    </LinearLayout>
+
     <TextView
         android:id="@+id/deposited_Coin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="80dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/deposited_coin_Linear_Layout"
         android:text="200"
         android:textSize="25sp"
         android:textStyle="bold"
         android:textColor="@color/gray"
         />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/corner_button_gray"
-        android:textColor="@color/white"
-        android:layout_marginStart="50dp"
-        android:text="상세 정보"/>
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

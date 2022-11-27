@@ -80,6 +80,7 @@
             android:textColor="@color/color_coin"
             />
         <Button
+            android:id="@+id/moveCoinPageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/corner_button_coin"
