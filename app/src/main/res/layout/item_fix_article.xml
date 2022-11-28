@@ -51,7 +51,8 @@
         android:text="5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:drawableLeftCompat="@drawable/ic_baseline_thumb_up_24" />
+        android:drawablePadding="10dp"
+        app:drawableLeftCompat="@drawable/like_resize" />
 
     <TextView
         android:id="@+id/fix_WriterTextView"

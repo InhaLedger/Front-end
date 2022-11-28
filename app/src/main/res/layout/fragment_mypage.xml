@@ -83,7 +83,7 @@
             android:id="@+id/moveCoinPageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/corner_button_coin"
+            android:background="@drawable/yellow_gray_btn"
             android:textColor="@color/white"
             android:layout_marginStart="25dp"
             android:text="코인 관리"/>

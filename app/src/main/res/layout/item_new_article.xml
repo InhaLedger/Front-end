@@ -25,7 +25,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
-        android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@id/new_likeTextView"
@@ -52,14 +51,14 @@
         android:text="5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:drawableLeftCompat="@drawable/ic_baseline_thumb_up_24" />
+        android:drawablePadding="10dp"
+        app:drawableLeftCompat="@drawable/like_resize" />
 
     <TextView
         android:id="@+id/new_WriterTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
-        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@id/new_likeTextView"
         app:layout_constraintStart_toStartOf="@id/new_SongTitleTextView"
