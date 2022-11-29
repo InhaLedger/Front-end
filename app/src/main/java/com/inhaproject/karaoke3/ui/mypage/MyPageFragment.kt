@@ -3,9 +3,11 @@ package com.inhaproject.karaoke3.ui.mypage
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -16,15 +18,22 @@ import com.inhaproject.karaoke3.R
 import com.inhaproject.karaoke3.databinding.FragmentCommunityBinding
 import com.inhaproject.karaoke3.preference.App
 import com.inhaproject.karaoke3.recycler.DistanceItemDecorator
+import com.inhaproject.karaoke3.retrofit.RetroInterface
 import com.inhaproject.karaoke3.ui.community.CommunityAdapter
 import com.inhaproject.karaoke3.ui.community.CommunityData
+import com.inhaproject.karaoke3.ui.mypage.coin.BalanceData
 import com.inhaproject.karaoke3.ui.mypage.coin.CoinActivity
 import kotlinx.android.synthetic.main.toolbar.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MyPageFragment : Fragment() {
 
     private lateinit var myPageAdapter: MyPageAdapter
     private val data = mutableListOf<MyPageData>()
+
+    private val api = RetroInterface.create()
 
     lateinit var binding: FragmentMypageBinding
 
@@ -39,10 +48,27 @@ class MyPageFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentMypageBinding.inflate(inflater, container, false)
 
         initRecycler()
+
+        api.myCoin().enqueue(object : Callback<BalanceData>{
+            override fun onResponse(call: Call<BalanceData>, response: Response<BalanceData>) {
+                if(response.code() == 200){
+                    binding.holdingCoin.text =
+                        (response.body()?.availableBalance?.plus(response.body()?.stakedBalance!!)).toString()
+                }
+            }
+
+            override fun onFailure(call: Call<BalanceData>, t: Throwable) {
+                Toast.makeText(
+                    mainActivity, "잔고 조회 실패", Toast.LENGTH_SHORT
+                ).show()
+                Log.d("잔고 조회 오류",t.message.toString())
+            }
+
+        })
 
         binding.userNameTextView.text = App.prefs.id
 

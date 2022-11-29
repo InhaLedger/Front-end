@@ -8,6 +8,7 @@ import com.inhaproject.karaoke3.ui.community.fixboard.FixArticleData
 import com.inhaproject.karaoke3.ui.community.newboard.NewArticleData
 import com.inhaproject.karaoke3.ui.community.noteboard.NoteArticleData
 import com.inhaproject.karaoke3.ui.home.RankData
+import com.inhaproject.karaoke3.ui.mypage.coin.BalanceData
 import com.inhaproject.karaoke3.ui.mypage.mynote.MyNoteData
 import com.inhaproject.karaoke3.ui.mysong.BasketData
 import okhttp3.OkHttpClient
@@ -196,6 +197,9 @@ interface RetroInterface{
 
     @GET("/mysearch")
     fun mySearch() : Call<ArrayList<SearchData>>
+
+    @GET("/mycoin")
+    fun myCoin() : Call<BalanceData>
 
 
 
