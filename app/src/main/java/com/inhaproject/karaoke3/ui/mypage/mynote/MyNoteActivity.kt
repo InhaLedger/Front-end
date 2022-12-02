@@ -72,6 +72,9 @@ class MyNoteActivity: AppCompatActivity() {
     }
     private fun CodeToString(string: String?){
         when (string) {
+            "C0" -> {
+                note = "-2옥타브 도"
+            }
             "C2" -> {
                 note = "0옥타브 도"
             }
@@ -158,6 +161,9 @@ class MyNoteActivity: AppCompatActivity() {
             }
             "C6" -> {
                 note = "4옥타브 도"
+            }
+            "B8" -> {
+                note = "5옥타브 시"
             }
         }
     }

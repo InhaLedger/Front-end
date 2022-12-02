@@ -29,6 +29,8 @@ class NoteSearchAdapter (private val searchList : ArrayList<SearchData>, val con
             singer.text = searchModel.singer
             star.text = "("+searchModel.star.toString()+")"
             Glide.with(itemView).load(searchModel.imageurl).into(image)
+            binding.svHighNoteTextView.text = "최고 음 : "+searchModel.highNote
+            binding.svLowNoteTextView.text = "최저 음 : "+searchModel.lowNote
 
             itemView.setOnClickListener {
                 val intent = Intent(context,NoteAddArticleActivity::class.java)

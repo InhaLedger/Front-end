@@ -29,6 +29,8 @@ class MySearchAdapter (private val MySearchList : ArrayList<SearchData>, val con
             txtName.text = item.title
             txtSinger.text = item.singer
             Glide.with(itemView).load(item.imageurl).into(image)
+            binding.msvHighNote.text = "최고 음 : "+item.highNote
+            binding.msvLowNote.text = "최저 음 : "+item.lowNote
         }
     }
 

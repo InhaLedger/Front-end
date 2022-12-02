@@ -48,13 +48,11 @@ class CoinActivity: AppCompatActivity() {
         transferBtn.setOnClickListener {
             val intent = Intent(this,TransferActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
         depositBtn.setOnClickListener {
             val intent = Intent(this,DepositActivity::class.java)
             startActivity(intent)
-            finish()
         }
     }
 

@@ -75,6 +75,9 @@
         <activity android:name=".ui.mypage.coin.CoinActivity"/>
         <activity android:name=".ui.mypage.coin.TransferActivity"/>
         <activity android:name=".ui.mypage.coin.DepositActivity"/>
+        <activity android:name=".SearchByNoteActivity"/>
+        <activity android:name=".ui.mypage.admin.SystemDepositActivity"/>
+        <activity android:name=".ui.mypage.admin.AdminActivity"/>
     </application>
 
 </manifest>

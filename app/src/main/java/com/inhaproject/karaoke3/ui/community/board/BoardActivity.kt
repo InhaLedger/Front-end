@@ -44,11 +44,6 @@ class BoardActivity : AppCompatActivity() {
                     response.body().let {
                         if (response.code() == 200) {
                             articleList = response.body()!!
-                            Toast.makeText(
-                                this@BoardActivity,
-                                "게시판 서버 연결 성공 " + response.code(),
-                                Toast.LENGTH_SHORT
-                            ).show()
                             setArticleAdapter(articleList)
                         }
                     }

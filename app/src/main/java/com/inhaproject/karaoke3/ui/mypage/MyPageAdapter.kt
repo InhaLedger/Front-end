@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.inhaproject.karaoke3.R
 import com.inhaproject.karaoke3.databinding.ItemMypageBinding
+import com.inhaproject.karaoke3.ui.mypage.admin.AdminActivity
 import com.inhaproject.karaoke3.ui.mypage.mynote.MyNoteActivity
 import com.inhaproject.karaoke3.ui.mypage.mysearch.MySearchActivity
 import com.inhaproject.karaoke3.ui.mypage.record.RecordActivity
@@ -45,6 +46,7 @@ class MyPageAdapter (fragment: MyPageFragment) : RecyclerView.Adapter<MyPageAdap
                     "목소리 녹음 / 분석" -> intent = Intent(context, RecordActivity::class.java)
                     "나의 음역대" -> intent = Intent(context,MyNoteActivity::class.java)
                     "맞춤 노래 추천" -> intent = Intent(context, MySearchActivity::class.java)
+                    "관리자 메뉴" -> intent = Intent(context, AdminActivity::class.java)
                 }
                 intent.run { context.startActivity(this) }
             }

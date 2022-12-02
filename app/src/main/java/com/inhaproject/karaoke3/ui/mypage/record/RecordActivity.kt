@@ -151,7 +151,7 @@ class RecordActivity : AppCompatActivity() {
                         recordSub.text = "3초간 낮은 음을 내주세요"
                     },3000)
                     Handler(Looper.getMainLooper()).postDelayed({
-                        recordSub.text = "wndwl"
+                        recordSub.text = "녹음을 중지해주세요"
                     },6000)
                 }
                 State.ON_RECORDING -> {

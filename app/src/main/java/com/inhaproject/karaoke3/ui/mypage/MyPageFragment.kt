@@ -89,6 +89,10 @@ class MyPageFragment : Fragment() {
             add(MyPageData("나의 음역대",R.drawable.music_note))
             add(MyPageData("맞춤 노래 추천",R.drawable.microphone_icon))
 
+            if (App.prefs.id == "aaa"){
+                add(MyPageData("관리자 메뉴",R.drawable.admin_icon))
+            }
+
             binding.myPageRecyclerView.addItemDecoration(DistanceItemDecorator(15))
             binding.myPageRecyclerView.addItemDecoration(
                 DividerItemDecoration(context,
