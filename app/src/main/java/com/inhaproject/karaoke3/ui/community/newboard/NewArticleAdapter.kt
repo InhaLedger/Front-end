@@ -28,13 +28,15 @@ class NewArticleAdapter(
 
             title.text = articleModel.new_title
             singer.text = articleModel.new_singer
-            like.text = articleModel.vote.toString()
+            like.text = articleModel.upvote.toString()
             writer.text = "작성자 : " + articleModel.userid
             release.text = "발매일 : "+ articleModel.new_releasedate.substring(0 until 10)
 
             itemView.setOnClickListener {
                 val intent = Intent(con, ReadNewActivity::class.java)
                 intent.putExtra("게시물 번호", articleModel.newidx.toString())
+                intent.putExtra("추천 수",articleModel.upvote.toString())
+                intent.putExtra("비추천 수",articleModel.downvote.toString())
                 intent.run { con.startActivity(this) }
             }
         }

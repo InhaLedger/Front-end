@@ -38,6 +38,7 @@ class AdminSendActivity:AppCompatActivity() {
                         Toast.makeText(
                             this@AdminSendActivity, "송금 완료", Toast.LENGTH_SHORT
                         ).show()
+                        finish()
                     }
                 }
 
@@ -45,7 +46,7 @@ class AdminSendActivity:AppCompatActivity() {
                     Toast.makeText(
                         this@AdminSendActivity, "송금 실패", Toast.LENGTH_SHORT
                     ).show()
-                    Log.d("잔고 충전 오류",t.message.toString())
+                    Log.d("송금 오류",t.message.toString())
                 }
 
             })

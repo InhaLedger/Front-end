@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.inhaproject.karaoke3.R
@@ -24,6 +25,7 @@ class AdminActivity: AppCompatActivity() {
         binding = ActivityAdminBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_admin)
 
+        val balance : TextView = findViewById(R.id.systemCoinmanage)
         val depositBtn : Button = findViewById(R.id.moveSystemTransferButton)
         val finalizeBtn : Button = findViewById(R.id.finalizeButton)
         val sendBtn : Button = findViewById(R.id.moveSendButton)
@@ -47,10 +49,30 @@ class AdminActivity: AppCompatActivity() {
             startActivity(intent)
         }
 
+        finalizeBtn.setOnClickListener {
+            api.finalize().enqueue(object : Callback<String>{
+                override fun onResponse(call: Call<String>, response: Response<String>) {
+                    if(response.code() == 200){
+                        Toast.makeText(
+                            this@AdminActivity, "정산 완료", Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<String>, t: Throwable) {
+                    Toast.makeText(
+                        this@AdminActivity, "정산 실패", Toast.LENGTH_SHORT
+                    ).show()
+                    Log.d("정산 오류",t.message.toString())
+                }
+
+            })
+        }
+
         api.adminMyCoin().enqueue(object : Callback<BalanceData>{
             override fun onResponse(call: Call<BalanceData>, response: Response<BalanceData>) {
                 if(response.code() == 200){
-                    binding.systemCoinmanage.text = response.body()?.availableBalance.toString()
+                    balance.text = response.body()?.availableBalance.toString()
                 }
             }
 

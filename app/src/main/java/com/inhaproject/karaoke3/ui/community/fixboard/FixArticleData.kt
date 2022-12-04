@@ -14,5 +14,7 @@ data class FixArticleData(
     val fix_writer: String,
     val fixidx: Int,
     val userid: String,
-    val vote: Int
+    val upvote: Int,
+    val downvote: Int,
+    val already_vote : Int
 )

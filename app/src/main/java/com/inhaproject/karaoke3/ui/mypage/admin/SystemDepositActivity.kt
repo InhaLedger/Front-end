@@ -37,6 +37,7 @@ class SystemDepositActivity: AppCompatActivity() {
                         Toast.makeText(
                             this@SystemDepositActivity, "잔고 충전 완료", Toast.LENGTH_SHORT
                         ).show()
+                        finish()
                     }
                 }
 

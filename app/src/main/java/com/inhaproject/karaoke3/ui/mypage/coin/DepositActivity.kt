@@ -1,28 +1,27 @@
 package com.inhaproject.karaoke3.ui.mypage.coin
 
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.inhaproject.karaoke3.SearchData
 import com.inhaproject.karaoke3.databinding.ActivityDepositBinding
 import com.inhaproject.karaoke3.recycler.DistanceItemDecorator
 import com.inhaproject.karaoke3.retrofit.RetroInterface
-import com.inhaproject.karaoke3.ui.mypage.mysearch.MySearchAdapter
-import java.util.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import kotlin.collections.ArrayList
 
 class DepositActivity: AppCompatActivity() {
     private lateinit var binding: ActivityDepositBinding
     private lateinit var depositAdapter : DepositAdapter
 
-    var data : DepositData? = null
-    private var depositList = ArrayList<DepositData>()
+    var data : BalanceData? = null
+    var mapList : Map<Long,DepositData> = mutableMapOf()
 
-    val a : DepositData = DepositData("2022-11-28","2022-12-11",
-    "1000","게시글 추천")
-    val b : DepositData = DepositData("2022-11-28","2022-12-11",
-        "500","게시글 투표")
+    var depositList = ArrayList<DepositData>()
 
     private val api = RetroInterface.create()
 
@@ -31,14 +30,34 @@ class DepositActivity: AppCompatActivity() {
         binding = ActivityDepositBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        depositList.clear()
-        depositList.add(0,a)
-        depositList.add(1,b)
+        api.myCoin().enqueue(object : Callback<BalanceData>{
+            override fun onResponse(call: Call<BalanceData>, response: Response<BalanceData>) {
+                if(response.code() == 200){
+                    data = response.body()
+                    mapList = data!!.stakeList
 
-        setDepositAdapter(depositList)
+                    val iterData = mapList.iterator()
+
+                    while (iterData.hasNext()){
+                        val result = iterData.next()
+                        depositList.add(
+                            DepositData(result.value.amount,result.value.completeTimestamp,
+                        result.value.simpleClassName,result.value.timestamp,result.value.userId))
+                    }
+                    setDepositAdapter(depositList)
+                }
+            }
+
+            override fun onFailure(call: Call<BalanceData>, t: Throwable) {
+                Toast.makeText(this@DepositActivity,"deposit 서버 연결 실패"
+                    , Toast.LENGTH_SHORT).show()
+                Log.d("deposit 로딩 실패", t.message.toString())
+            }
+
+        })
     }
 
-    private fun setDepositAdapter(depositDataList : ArrayList<DepositData>) {
+    private fun setDepositAdapter(depositDataList: ArrayList<DepositData>) {
         depositAdapter = DepositAdapter(depositDataList, this)
 
         binding.depositRecyclerView.layoutManager = LinearLayoutManager(this)

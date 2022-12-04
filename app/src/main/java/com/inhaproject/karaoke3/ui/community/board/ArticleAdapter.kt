@@ -33,11 +33,13 @@ class ArticleAdapter(
             title.text = articleModel.packtitle
             writer.text = "작성자: " + articleModel.userid
 
-            vote.text = articleModel.vote.toString()
+            vote.text = articleModel.upvote.toString()
 
             itemView.setOnClickListener {
                 val intent = Intent(con, ReadPackActivity::class.java)
                 intent.putExtra("게시물 번호",articleModel.packidx.toString())
+                intent.putExtra("추천 수",articleModel.upvote.toString())
+                intent.putExtra("비추천 수",articleModel.downvote.toString())
                 intent.run { con.startActivity(this) }
             }
 

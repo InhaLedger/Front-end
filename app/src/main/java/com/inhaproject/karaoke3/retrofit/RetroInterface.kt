@@ -10,6 +10,7 @@ import com.inhaproject.karaoke3.ui.community.noteboard.NoteArticleData
 import com.inhaproject.karaoke3.ui.home.RankData
 import com.inhaproject.karaoke3.ui.mypage.ProposalData
 import com.inhaproject.karaoke3.ui.mypage.coin.BalanceData
+import com.inhaproject.karaoke3.ui.mypage.coin.FindUserData
 import com.inhaproject.karaoke3.ui.mypage.mynote.MyNoteData
 import com.inhaproject.karaoke3.ui.mysong.BasketData
 import okhttp3.OkHttpClient
@@ -64,8 +65,9 @@ interface RetroInterface{
 
     @FormUrlEncoded
     @POST("/packvote")
-    fun packLike(
-        @Field("packidx") packidx: String
+    fun packVote(
+        @Field("packidx") packidx: String,
+        @Field("votetype") votetype: String
     ) : Call<String>
 
     @FormUrlEncoded
@@ -109,8 +111,9 @@ interface RetroInterface{
 
     @FormUrlEncoded
     @POST("/notevote")
-    fun noteLike(
-        @Field("noteidx") noteidx: String
+    fun noteVote(
+        @Field("noteidx") noteidx: String,
+        @Field("votetype") votetype: String
     ) : Call<String>
 
     // 신곡 게시판 API
@@ -140,8 +143,9 @@ interface RetroInterface{
 
     @FormUrlEncoded
     @POST("/newvote")
-    fun newLike(
-        @Field("newidx") newidx: String
+    fun newVote(
+        @Field("newidx") newidx: String,
+        @Field("votetype") votetype: String
     ) : Call<String>
 
     //수정 게시판 API
@@ -171,8 +175,9 @@ interface RetroInterface{
 
     @FormUrlEncoded
     @POST("/fixvote")
-    fun fixLike(
-        @Field("fixidx") fixidx: String
+    fun fixVote(
+        @Field("fixidx") fixidx: String,
+        @Field("votetype") votetype: String
     ) : Call<String>
 
 
@@ -202,6 +207,22 @@ interface RetroInterface{
     @GET("/mycoin")
     fun myCoin() : Call<BalanceData>
 
+    @GET("/myproposal")
+    fun myProposal() : Call<ArrayList<ProposalData>>
+
+    @FormUrlEncoded
+    @POST("/sendcoin")
+    fun sendCoin(
+        @Field("receiverId") receiverId : String,
+        @Field("amounts") amounts: String
+    ) : Call<String>
+
+    @FormUrlEncoded
+    @POST("/finduser")
+    fun findUser(
+        @Field("userid") userid : String
+    ) : Call<ArrayList<FindUserData>>
+
     //관리자 전용
     @GET("/admin_mycoin")
     fun adminMyCoin() : Call<BalanceData>
@@ -209,7 +230,7 @@ interface RetroInterface{
     @FormUrlEncoded
     @POST("/admin_sendcoin")
     fun adminSendCoin(
-        @Field("receiverID") receiverID : String,
+        @Field("receiverId") receiverId : String,
         @Field("amounts") amounts : String
     ) : Call<String>
 
@@ -227,6 +248,9 @@ interface RetroInterface{
 
     @GET("/admin_proposal")
     fun adminProposal() : Call<ArrayList<ProposalData>>
+
+    @GET("/admin_finalize")
+    fun finalize() : Call<String>
 
 
     companion object { // static 처럼 공유객체로 사용가능함. 모든 인스턴스가 공유하는 객체로서 동작함.

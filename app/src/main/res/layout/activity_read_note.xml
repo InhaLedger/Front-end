@@ -133,5 +133,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/note_Content" />
 
+    <TextView
+        android:id="@+id/note_DisLike_TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/noteLike"
+        android:layout_marginEnd="125dp"
+        android:text="123"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

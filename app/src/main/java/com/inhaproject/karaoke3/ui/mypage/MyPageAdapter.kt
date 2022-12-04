@@ -46,6 +46,7 @@ class MyPageAdapter (fragment: MyPageFragment) : RecyclerView.Adapter<MyPageAdap
                     "목소리 녹음 / 분석" -> intent = Intent(context, RecordActivity::class.java)
                     "나의 음역대" -> intent = Intent(context,MyNoteActivity::class.java)
                     "맞춤 노래 추천" -> intent = Intent(context, MySearchActivity::class.java)
+                    "내 투표 현황" -> intent = Intent(context, MyProposalActivity::class.java)
                     "관리자 메뉴" -> intent = Intent(context, AdminActivity::class.java)
                 }
                 intent.run { context.startActivity(this) }

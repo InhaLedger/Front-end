@@ -12,10 +12,12 @@ import retrofit2.Callback
 import retrofit2.Response
 import android.content.Context
 import android.graphics.Color
+import android.text.TextUtils
 import android.util.Log
 import android.view.MenuItem
 import android.widget.*
 import com.bumptech.glide.Glide
+import org.w3c.dom.Text
 
 class ReadFixActivity: AppCompatActivity() {
     private lateinit var binding: ActivityReadFixBinding
@@ -23,6 +25,7 @@ class ReadFixActivity: AppCompatActivity() {
     private val api = RetroInterface.create()
 
     var data : FixArticleData? = null
+    var already = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,8 +34,10 @@ class ReadFixActivity: AppCompatActivity() {
         val title = findViewById<TextView>(R.id.fixReadTitle)
         val writer = findViewById<TextView>(R.id.fixReadWriter)
         val like = findViewById<TextView>(R.id.fix_Like_TextView)
+        val dislike = findViewById<TextView>(R.id.fix_DisLike_TextView)
         val content = findViewById<TextView>(R.id.fix_Content)
         val likeButton = findViewById<ImageButton>(R.id.fix_Like_Button)
+        val dislikeButton = findViewById<ImageButton>(R.id.fix_Dislike_Button)
         val image = findViewById<ImageView>(R.id.fixReadImageView)
         val albumName = findViewById<TextView>(R.id.fixReadAlbumName)
         val singTitle = findViewById<TextView>(R.id.fixReadSingTitle)
@@ -43,6 +48,20 @@ class ReadFixActivity: AppCompatActivity() {
 
         val idx = intent.getStringExtra("게시물 번호")
 
+        Log.d("추천 유무",intent.getStringExtra("추천 수").toString())
+        if (!TextUtils.isEmpty(intent.getStringExtra("추천 수"))) {
+            like.text = intent.getStringExtra("추천 수").toString()
+        }
+
+        else like.text = "0"
+
+        Log.d("비추천 유무",intent.getStringExtra("비추천 수").toString())
+        if (!TextUtils.isEmpty(intent.getStringExtra("비추천 수"))) {
+            dislike.text = intent.getStringExtra("비추천 수").toString()
+        }
+
+        else dislike.text = "0"
+
         api.fixRead(idx.toString()).enqueue(object : Callback<ArrayList<FixArticleData>>{
             override fun onResponse(
                 call: Call<ArrayList<FixArticleData>>,
@@ -50,8 +69,7 @@ class ReadFixActivity: AppCompatActivity() {
             ) {
                 if(response.code() == 200){
                     title.text = response.body()?.get(0)?.fix_boardtitle.toString()
-                    writer.text = "작성자 : " + response.body()?.get(0)?.fix_writer.toString()
-                    like.text = response.body()?.get(0)?.vote.toString()
+                    writer.text = "작성자 : " + response.body()?.get(0)?.userid.toString()
                     content.text = response.body()?.get(0)?.fix_boardcontent.toString()
                     Glide.with(this@ReadFixActivity).load(
                         response.body()?.get(0)?.fix_imageurl.toString()
@@ -72,6 +90,7 @@ class ReadFixActivity: AppCompatActivity() {
                     val beforeImage = response.body()?.get(0)?.fix_imageurl.toString()
                     val beforeAlbum = response.body()?.get(0)?.fix_album.toString()
                     val beforeNo = response.body()?.get(0)?.fix_no.toString()
+                    already = response.body()?.get(0)?.already_vote!!
 
                     api.searchSong(beforeNo,"","","","","","","")
                         .enqueue(object : Callback<ArrayList<SearchData>>{
@@ -80,6 +99,7 @@ class ReadFixActivity: AppCompatActivity() {
                                 response: Response<ArrayList<SearchData>>
                             ) {
                                 if(response.code() == 200){
+
 
                                     if (beforeSingTitle != response.body()?.get(0)?.title.toString())
                                         singTitle.setTextColor(ContextCompat
@@ -99,6 +119,86 @@ class ReadFixActivity: AppCompatActivity() {
                                     if (beforeAlbum != response.body()?.get(0)?.album.toString())
                                         albumName.setTextColor(ContextCompat
                                             .getColor(this@ReadFixActivity, R.color.colorBlue))
+
+                                    likeButton.setOnClickListener {
+                                        if(already == 1){
+                                            Toast.makeText(this@ReadFixActivity,"이미 투표한 게시물입니다.", Toast.LENGTH_SHORT).show()
+                                        }
+
+                                        else {
+                                            api.fixVote(idx.toString(), "up")
+                                                .enqueue(object : Callback<String> {
+                                                    override fun onResponse(
+                                                        call: Call<String>,
+                                                        response: Response<String>
+                                                    ) {
+                                                        if (response.code() == 201) {
+                                                            Toast.makeText(
+                                                                this@ReadFixActivity,
+                                                                "추천 하였습니다.",
+                                                                Toast.LENGTH_SHORT
+                                                            ).show()
+
+                                                            like.text = (like.text.toString()
+                                                                .toInt() + 1).toString()
+                                                        }
+                                                    }
+
+                                                    override fun onFailure(
+                                                        call: Call<String>,
+                                                        t: Throwable
+                                                    ) {
+                                                        Toast.makeText(
+                                                            this@ReadFixActivity,
+                                                            "추천에 실패하였습니다.",
+                                                            Toast.LENGTH_SHORT
+                                                        ).show()
+                                                        Log.d("추천 실패", t.message.toString())
+                                                    }
+
+                                                })
+                                        }
+                                    }
+
+                                    dislikeButton.setOnClickListener {
+                                        if(already == 1){
+                                            Toast.makeText(this@ReadFixActivity,"이미 투표한 게시물입니다.", Toast.LENGTH_SHORT).show()
+                                        }
+
+                                        else {
+                                            api.fixVote(idx.toString(), "down")
+                                                .enqueue(object : Callback<String> {
+                                                    override fun onResponse(
+                                                        call: Call<String>,
+                                                        response: Response<String>
+                                                    ) {
+                                                        if (response.code() == 201) {
+                                                            Toast.makeText(
+                                                                this@ReadFixActivity,
+                                                                "비추천 하였습니다.",
+                                                                Toast.LENGTH_SHORT
+                                                            ).show()
+
+                                                            dislike.text = (dislike.text.toString()
+                                                                .toInt() + 1).toString()
+                                                        }
+                                                    }
+
+                                                    override fun onFailure(
+                                                        call: Call<String>,
+                                                        t: Throwable
+                                                    ) {
+                                                        Toast.makeText(
+                                                            this@ReadFixActivity,
+                                                            "비추천에 실패하였습니다.",
+                                                            Toast.LENGTH_SHORT
+                                                        ).show()
+                                                        Log.d("비추천 실패", t.message.toString())
+                                                    }
+
+                                                })
+                                        }
+                                    }
                                 }
                             }
 

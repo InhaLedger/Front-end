@@ -1,7 +1,7 @@
 package com.inhaproject.karaoke3.ui.community.newboard
 
-import android.media.Image
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -24,6 +24,8 @@ class ReadNewActivity: AppCompatActivity() {
 
     var data : NewArticleData? = null
 
+    var already = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_read_new)
@@ -31,8 +33,10 @@ class ReadNewActivity: AppCompatActivity() {
         val newTitle = findViewById<TextView>(R.id.newReadTitle)
         val newWriter = findViewById<TextView>(R.id.new_Writer)
         val newLike = findViewById<TextView>(R.id.new_Like_TextView)
+        val newDislike = findViewById<TextView>(R.id.new_DisLike_TextView)
         val newContent = findViewById<TextView>(R.id.new_Content)
         val newLikeButton = findViewById<ImageButton>(R.id.new_Like_Button)
+        val newDislikeButton = findViewById<ImageButton>(R.id.new_Dislike_Button)
         val image = findViewById<ImageView>(R.id.newReadImageView)
         val albumName = findViewById<TextView>(R.id.newReadAlbumName)
         val newSingTitle = findViewById<TextView>(R.id.newReadSingTitle)
@@ -43,6 +47,20 @@ class ReadNewActivity: AppCompatActivity() {
 
         val newIdx = intent.getStringExtra("게시물 번호")
 
+        Log.d("추천 유무",intent.getStringExtra("추천 수").toString())
+        if (!TextUtils.isEmpty(intent.getStringExtra("추천 수"))) {
+            newLike.text = intent.getStringExtra("추천 수").toString()
+        }
+
+        else newLike.text = "0"
+
+        Log.d("비추천 유무",intent.getStringExtra("비추천 수").toString())
+        if (!TextUtils.isEmpty(intent.getStringExtra("비추천 수"))) {
+            newDislike.text = intent.getStringExtra("비추천 수").toString()
+        }
+
+        else newDislike.text = "0"
+
         api.newRead(newIdx.toString()).enqueue(object : Callback<ArrayList<NewArticleData>>{
             override fun onResponse(
                 call: Call<ArrayList<NewArticleData>>,
@@ -51,7 +69,7 @@ class ReadNewActivity: AppCompatActivity() {
                 if(response.code() == 200){
                     newTitle.text = response.body()?.get(0)?.new_boardtitle.toString()
                     newWriter.text = "작성자 : "+response.body()?.get(0)?.userid.toString()
-                    newLike.text = response.body()?.get(0)?.vote.toString()
+                    newLike.text = response.body()?.get(0)?.upvote.toString()
                     newContent.text = response.body()?.get(0)?.new_boardcontent.toString()
                     Glide.with(this@ReadNewActivity)
                         .load(response.body()?.get(0)?.new_imageurl.toString()).into(image)
@@ -62,33 +80,76 @@ class ReadNewActivity: AppCompatActivity() {
                     response.body()?.get(0)?.new_lyricist.toString()
                     releaseDate.text = "발매일 : "+response.body()?.get(0)?.new_releasedate.toString().substring(0 until 10)
                     newNo.text ="노래방 번호 : " + response.body()?.get(0)?.new_no.toString()
+                    already = response.body()?.get(0)?.already_vote!!
 
                 }
                 newLikeButton.setOnClickListener {
-                    api.newLike(newIdx.toString()).enqueue(object : Callback<String>{
-                        override fun onResponse(call: Call<String>, response: Response<String>) {
-                            if (response.code() == 200) {
-                                Toast.makeText(
-                                    this@ReadNewActivity,
-                                    "추천하였습니다.",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                    if(already == 1){
+                        Toast.makeText(this@ReadNewActivity,"이미 투표한 게시물입니다.", Toast.LENGTH_SHORT).show()
+                    }
 
-                                newLike.text = (newLike.text.toString().toInt() + 1).toString()
-                            } else if (response.code() == 403) {
-                                Toast.makeText(
-                                    this@ReadNewActivity,
-                                    "이미 추천하신 게시물입니다.",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+
+                    else {
+                        api.newVote(newIdx.toString(), "up").enqueue(object : Callback<String> {
+                            override fun onResponse(
+                                call: Call<String>,
+                                response: Response<String>
+                            ) {
+                                if (response.code() == 201) {
+                                    Toast.makeText(
+                                        this@ReadNewActivity,
+                                        "추천하였습니다.",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                    newLike.text = (newLike.text.toString().toInt() + 1).toString()
+                                }
                             }
-                        }
-                        override fun onFailure(call: Call<String>, t: Throwable) {
-                            Toast.makeText(this@ReadNewActivity,"추천에 실패하였습니다.", Toast.LENGTH_SHORT).show()
-                            Log.d("추천 실패", t.message.toString())
-                        }
 
-                    })
+                            override fun onFailure(call: Call<String>, t: Throwable) {
+                                Toast.makeText(
+                                    this@ReadNewActivity,
+                                    "추천에 실패하였습니다.",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                Log.d("추천 실패", t.message.toString())
+                            }
+
+                        })
+                    }
+                }
+
+                newDislikeButton.setOnClickListener {
+                    if (already == 1) {
+                        Toast.makeText(this@ReadNewActivity, "이미 투표한 게시물입니다.", Toast.LENGTH_SHORT)
+                            .show()
+                    } else {
+                        api.newVote(newIdx.toString(), "down").enqueue(object : Callback<String> {
+                            override fun onResponse(
+                                call: Call<String>,
+                                response: Response<String>
+                            ) {
+                                if (response.code() == 201) {
+                                    Toast.makeText(
+                                        this@ReadNewActivity,
+                                        "추천하였습니다.",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+
+                                    newLike.text = (newLike.text.toString().toInt() + 1).toString()
+                                }
+                            }
+
+                            override fun onFailure(call: Call<String>, t: Throwable) {
+                                Toast.makeText(
+                                    this@ReadNewActivity,
+                                    "추천에 실패하였습니다.",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                Log.d("추천 실패", t.message.toString())
+                            }
+
+                        })
+                    }
                 }
             }
 

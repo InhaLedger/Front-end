@@ -29,13 +29,15 @@ class FixArticleAdapter(
 
             title.text = articleModel.fix_title
             singer.text = articleModel.fix_singer
-            like.text = articleModel.vote.toString()
+            like.text = articleModel.upvote.toString()
             writer.text = "작성자 : " + articleModel.userid
             release.text = "발매일 : "+ articleModel.fix_releasedate.substring(0 until 10)
 
             itemView.setOnClickListener {
                 val intent = Intent(con, ReadFixActivity::class.java)
                 intent.putExtra("게시물 번호", articleModel.fixidx.toString())
+                intent.putExtra("추천 수",articleModel.upvote.toString())
+                intent.putExtra("비추천 수",articleModel.downvote.toString())
                 intent.run { con.startActivity(this) }
             }
         }

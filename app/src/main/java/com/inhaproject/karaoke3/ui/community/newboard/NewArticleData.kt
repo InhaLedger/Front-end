@@ -14,5 +14,7 @@ data class NewArticleData(
     val new_writer: String,
     val newidx: Int,
     val userid: String,
-    val vote: Int
+    val upvote: Int,
+    val downvote: Int,
+    val already_vote : Int
 )

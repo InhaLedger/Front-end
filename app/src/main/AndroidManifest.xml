@@ -81,6 +81,8 @@
         <activity android:name=".ui.mypage.admin.AdminBlockActivity"/>
         <activity android:name=".ui.mypage.admin.AdminProposalActivity"/>
         <activity android:name=".ui.mypage.admin.AdminSendActivity"/>
+        <activity android:name=".ui.mypage.MyProposalActivity"/>
+        <activity android:name=".ui.mypage.coin.SendCoinActivity"/>
 
     </application>
 

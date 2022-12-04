@@ -1,8 +1,8 @@
 package com.inhaproject.karaoke3.ui.mypage.coin
 
 data class BalanceData(
-    val availableBalance: Int,
+    val availableBalance: Double,
     val ownerId: String,
-    val stakeList: StakeList,
-    val stakedBalance: Int
+    val stakeList: Map<Long ,DepositData>,
+    val stakedBalance: Double
 )

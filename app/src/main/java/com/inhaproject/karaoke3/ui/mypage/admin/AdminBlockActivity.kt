@@ -36,6 +36,7 @@ class AdminBlockActivity: AppCompatActivity() {
                         Toast.makeText(
                             this@AdminBlockActivity, "유저 차단 완료", Toast.LENGTH_SHORT
                         ).show()
+                        finish()
                     }
                 }
 

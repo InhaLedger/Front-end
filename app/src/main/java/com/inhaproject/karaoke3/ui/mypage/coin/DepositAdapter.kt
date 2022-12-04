@@ -1,19 +1,16 @@
 package com.inhaproject.karaoke3.ui.mypage.coin
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.inhaproject.karaoke3.R
-import com.inhaproject.karaoke3.SearchData
 import com.inhaproject.karaoke3.databinding.ItemDepositBinding
-import com.inhaproject.karaoke3.databinding.ItemMysearchBinding
-import com.inhaproject.karaoke3.ui.mypage.mysearch.MySearchAdapter
+import java.text.SimpleDateFormat
 
-class DepositAdapter (private val depositList : ArrayList<DepositData>, val context : Context)
+class DepositAdapter(private val depositList: ArrayList<DepositData>, val context: Context)
     : RecyclerView.Adapter<DepositAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: ItemDepositBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -25,11 +22,26 @@ class DepositAdapter (private val depositList : ArrayList<DepositData>, val cont
 
         private val context = binding.root.context
 
+
+        private fun convertTimestampToDate(timestamp: Long) : String {
+            val sdf = SimpleDateFormat("yyyy-MM-dd-hh:mm")
+            val date = sdf.format(timestamp)
+            Log.d("TTT UNix Date -> ", sdf.format((System.currentTimeMillis())).toString())
+            Log.d("TTTT date -> ", date.toString())
+
+            return date.toString()
+        }
+
+
         fun bind(item: DepositData) {
-            dDate.text = item.depositDate
-            eDate.text = item.expireDate
-            content.text = item.content
-            coin.text = item.price
+            dDate.text = convertTimestampToDate(item.timestamp)
+            eDate.text = convertTimestampToDate(item.completeTimestamp)
+            coin.text = item.amount.toString()
+            if(item.amount.toInt() == 10){
+                content.text = "게시글 작성"
+            }
+            else
+                content.text = "게시글 투표"
         }
     }
 

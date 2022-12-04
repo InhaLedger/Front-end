@@ -33,13 +33,15 @@ class NoteArticleAdapter(
             writer.text = "작성자: " + articleModel.userid
             highNote.text = "최고 음: "+articleModel.highNote
             lowNote.text = "최저 음: "+articleModel.lowNote
-            like.text = articleModel.vote.toString()
+            like.text = articleModel.upvote.toString()
 
             itemView.setOnClickListener {
                 val intent = Intent(con, ReadNoteActivity::class.java)
                 intent.putExtra("음역대 게시물 번호",articleModel.noteidx.toString())
                 intent.putExtra("노래 제목",articleModel.title)
                 intent.putExtra("가수",articleModel.singer)
+                intent.putExtra("추천 수",articleModel.upvote.toString())
+                intent.putExtra("비추천 수",articleModel.downvote.toString())
                 intent.run { con.startActivity(this) }
             }
         }
