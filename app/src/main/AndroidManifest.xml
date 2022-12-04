@@ -78,6 +78,10 @@
         <activity android:name=".SearchByNoteActivity"/>
         <activity android:name=".ui.mypage.admin.SystemDepositActivity"/>
         <activity android:name=".ui.mypage.admin.AdminActivity"/>
+        <activity android:name=".ui.mypage.admin.AdminBlockActivity"/>
+        <activity android:name=".ui.mypage.admin.AdminProposalActivity"/>
+        <activity android:name=".ui.mypage.admin.AdminSendActivity"/>
+
     </application>
 
 </manifest>

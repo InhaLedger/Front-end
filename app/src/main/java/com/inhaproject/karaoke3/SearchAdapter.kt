@@ -41,6 +41,8 @@ class SearchAdapter(private val searchList : ArrayList<SearchData>, val context 
                     intent.putExtra("작사자",searchModel.lyricist)
                     intent.putExtra("앨범 제목",searchModel.album)
                     intent.putExtra("앨범 이미지",searchModel.imageurl)
+                    intent.putExtra("최고 음",searchModel.highNote)
+                    intent.putExtra("최저 음",searchModel.lowNote)
 
                     intent.run {
                         context?.startActivity(this)

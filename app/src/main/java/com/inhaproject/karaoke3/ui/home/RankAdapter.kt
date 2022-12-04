@@ -59,6 +59,7 @@ class RankAdapter(private val RankList : ArrayList<RankData>, val context: Conte
                 intent.putExtra("작사자",rankModel.lyricist)
                 intent.putExtra("앨범 제목",rankModel.album)
                 intent.putExtra("앨범 이미지",rankModel.imageurl)
+                intent.putExtra("최고 음",rankModel.highNote.toString())
 
                 intent.run {
                     context?.startActivity(this)

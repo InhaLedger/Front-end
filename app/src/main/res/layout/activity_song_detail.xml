@@ -59,60 +59,142 @@
         app:layout_constraintTop_toBottomOf="@id/ReadImageView" />
 
     <TextView
+        android:id="@+id/sub1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ReadAlbumName"
+        android:layout_marginStart="16dp"
+        android:text="제목 : "
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
         android:id="@+id/ReadSingTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="3dp"
         android:layout_marginTop="10dp"
         android:text="노래 제목"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/sub1"
         app:layout_constraintTop_toBottomOf="@id/ReadAlbumName" />
+
+    <TextView
+        android:id="@+id/sub5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ReadReleaseDate"
+        android:layout_marginStart="16dp"
+        android:text="노래방 번호 : "
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <TextView
         android:id="@+id/ReadNo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="3dp"
         android:layout_marginTop="10dp"
         android:text="노래방 번호:"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/sub5"
         app:layout_constraintTop_toBottomOf="@id/ReadReleaseDate" />
+
+    <TextView
+        android:id="@+id/sub3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ReadSinger"
+        android:layout_marginStart="16dp"
+        android:text="작사/작곡 : "
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <TextView
         android:id="@+id/ReadComposerAndLyricist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="3dp"
         android:layout_marginTop="10dp"
         android:text="작사/작곡:"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/sub3"
         app:layout_constraintTop_toBottomOf="@id/ReadSinger" />
+
+    <TextView
+        android:id="@+id/sub4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ReadComposerAndLyricist"
+        android:layout_marginStart="16dp"
+        android:text="발매일 : "
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <TextView
         android:id="@+id/ReadReleaseDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="3dp"
         android:layout_marginTop="10dp"
         android:text="발매일:"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/sub4"
         app:layout_constraintTop_toBottomOf="@id/ReadComposerAndLyricist" />
+
+    <TextView
+        android:id="@+id/sub2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ReadSingTitle"
+        android:layout_marginStart="16dp"
+        android:text="가수 : "
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <TextView
         android:id="@+id/ReadSinger"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="3dp"
         android:layout_marginTop="10dp"
         android:text="가수:"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/sub2"
         app:layout_constraintTop_toBottomOf="@id/ReadSingTitle" />
+
+    <TextView
+        android:id="@+id/sub6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ReadNo"
+        android:layout_marginStart="16dp"
+        android:text="내 음역대와의 차이 : "
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/ReadRange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="10dp"
+        android:text="3 key"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/sub6"
+        app:layout_constraintTop_toBottomOf="@id/ReadNo" />
 
 
 

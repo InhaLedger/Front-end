@@ -63,7 +63,7 @@
             android:textColor="@color/white"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="16dp"
-            android:text="입금"/>
+            android:text="잔고 충전"/>
     </LinearLayout>
 
     <TextView
@@ -81,7 +81,7 @@
         />
 
     <LinearLayout
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="30dp"
         android:id="@+id/calculateLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -94,16 +94,17 @@
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="6dp"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="4dp"
             android:text="유저 코인 정산"
-            android:layout_marginStart="20dp"
             android:textSize="22sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
         <Button
-            android:id="@+id/moveTransferButton"
+            android:id="@+id/finalizeButton"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:background="@drawable/yellow_gray_btn"
@@ -112,5 +113,108 @@
             android:layout_marginEnd="16dp"
             android:text="정산"/>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:id="@+id/adminSendLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/calculateLinearLayout">
+
+        <ImageView
+            android:id="@+id/send_Image_View"
+            android:src="@drawable/send_money_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="6dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="4dp"
+            android:text="코인 송금"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+        <Button
+            android:id="@+id/moveSendButton"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/yellow_gray_btn"
+            android:textColor="@color/white"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="16dp"
+            android:text="송금"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:id="@+id/adminBlockLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/adminSendLinearLayout">
+
+        <ImageView
+            android:id="@+id/block_Image_View"
+            android:src="@drawable/block_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="6dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="4dp"
+            android:text="유저 차단"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+        <Button
+            android:id="@+id/moveBlockButton"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/yellow_gray_btn"
+            android:textColor="@color/white"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="16dp"
+            android:text="차단"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:id="@+id/adminProposalLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/adminBlockLinearLayout">
+
+        <ImageView
+            android:id="@+id/proposal_Image_View"
+            android:src="@drawable/vote_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="6dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="4dp"
+            android:text="투표 현황"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+        <Button
+            android:id="@+id/moveAdminProposalButton"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/yellow_gray_btn"
+            android:textColor="@color/white"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="16dp"
+            android:text="상세"/>
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

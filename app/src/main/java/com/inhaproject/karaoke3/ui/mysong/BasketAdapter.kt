@@ -9,11 +9,13 @@ import com.inhaproject.karaoke3.databinding.ItemBasketBinding
 import android.content.Context
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ItemTouchHelper
+import com.inhaproject.karaoke3.databinding.DialogMemoBinding
 import com.inhaproject.karaoke3.retrofit.RetroInterface
 import retrofit2.Call
 import retrofit2.Callback
@@ -106,7 +108,22 @@ class BasketAdapter (private val MySongList : ArrayList<BasketData>, val context
                         }
                     }
                     builder.show()
+                }
 
+                R.id.memoItem ->{
+                    val builder = AlertDialog.Builder(context)
+                    builder.setTitle("메모")
+                    builder.setMessage("메모를 입력해주세요.")
+
+                    val inflater : LayoutInflater = LayoutInflater.from(context)
+                    val itemView : View = inflater.inflate(R.layout.item_basket,null)
+
+                    val et = EditText(context)
+                    builder.setView(et)
+
+                    builder.setPositiveButton("확인") {dialog, _->
+                    }
+                    builder.show()
                 }
             }
             return false
