@@ -1,8 +1,9 @@
 package com.inhaproject.karaoke3.ui.mypage.coin
 
 data class DepositData(
-    val depositDate : String,
-    val expireDate : String,
-    val price : String,
-    val content : String
+    val amount: Double,
+    val completeTimestamp: Long,
+    val simpleClassName: String,
+    val timestamp: Long,
+    val userId: String
 )
